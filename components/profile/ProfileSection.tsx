@@ -7,9 +7,6 @@ interface ProfileSectionProps {
   aboutMe: string;
   spokenLanguageCodes: string[];
   learningLanguageCodes: string[];
-  visitedCountryCodes: string[];
-  wantToVisitCountryCodes: string[];
-  favoriteBooks: string[];
   hobbies: string[];
 }
 
@@ -17,9 +14,6 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({
   aboutMe,
   spokenLanguageCodes,
   learningLanguageCodes,
-  visitedCountryCodes,
-  wantToVisitCountryCodes,
-  favoriteBooks,
   hobbies,
 }) => {
   const { t } = useTranslation();
@@ -41,25 +35,10 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({
         }}
       />
       <ProfileItem
-        type="travel"
-        title={t("profile.items.travel")}
-        icon="airplane"
-        data={{
-          visitedCountries: visitedCountryCodes,
-          wantToVisitCountries: wantToVisitCountryCodes,
-        }}
-      />
-      <ProfileItem
         type="hobbies"
         title={t("profile.items.hobbies")}
         icon="heart"
         data={{ hobbies }}
-      />
-      <ProfileItem
-        type="books"
-        title={t("profile.items.books")}
-        icon="library"
-        data={{ books: favoriteBooks }}
       />
     </View>
   );

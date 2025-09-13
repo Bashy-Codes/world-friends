@@ -69,15 +69,6 @@ const UserCardComponent: React.FC<UserCardProps> = ({
       marginBottom: verticalScale(16),
       overflow: "hidden",
     },
-    profileImage: {
-      width: "100%",
-      height: "100%",
-    },
-    profileImageError: {
-      backgroundColor: theme.colors.border,
-      justifyContent: "center",
-      alignItems: "center",
-    },
     nameContainer: {
       flexDirection: "row",
       alignItems: "center",

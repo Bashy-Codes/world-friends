@@ -43,40 +43,7 @@ export const UserInfo = memo<UserInfoProps>(
         height: scale(120),
         borderRadius: scale(60),
         marginBottom: verticalScale(16),
-        position: "relative",
-        ...Platform.select({
-          ios: {
-            shadowColor: theme.colors.shadow,
-            shadowOffset: { width: 0, height: 4 },
-            shadowOpacity: 0.1,
-            shadowRadius: 8,
-          },
-          android: {
-            elevation: 4,
-          },
-        }),
-      },
-      profileImagePlaceholder: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        borderRadius: scale(60),
-        backgroundColor: theme.colors.surface,
-        justifyContent: "center",
-        alignItems: "center",
-        zIndex: 1,
-      },
-      profileImage: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        borderRadius: scale(60),
-        backgroundColor: theme.colors.surface,
-        zIndex: 2,
+        position: "relative"
       },
       nameContainer: {
         flexDirection: "row",

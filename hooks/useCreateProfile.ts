@@ -12,7 +12,6 @@ import {
 import { BasicInfo } from "@/components/profile-management/BasicInfo";
 import { LanguagesCountry } from "@/components/profile-management/LanguagesCountry";
 import { AboutMe } from "@/components/profile-management/AboutMe";
-import { TravelInterests } from "@/components/profile-management/TravelInterests";
 import { Finalize } from "@/components/profile-management/Finalize";
 import { api } from "@/convex/_generated/api";
 import { uploadProfileImageToR2 } from "@/utils/uploadImages";
@@ -27,12 +26,7 @@ const getSteps = (t: any) => [
     component: LanguagesCountry,
   },
   { id: 3, title: t("screenTitles.profileManagement.third"), component: AboutMe },
-  {
-    id: 4,
-    title: t("screenTitles.profileManagement.fourth"),
-    component: TravelInterests,
-  },
-  { id: 5, title: t("screenTitles.profileManagement.final"), component: Finalize },
+  { id: 4, title: t("screenTitles.profileManagement.final"), component: Finalize },
 ];
 
 export const useCreateProfile = () => {
@@ -73,9 +67,6 @@ export const useCreateProfile = () => {
       languagesLearning: [],
       bio: "",
       hobbies: [],
-      favoriteBooks: [],
-      countriesTraveled: [],
-      countriesWantToTravel: [],
       profilePicture: "",
       genderPreference: false,
     },
@@ -98,10 +89,8 @@ export const useCreateProfile = () => {
         case 2:
           return ["country", "languagesSpoken", "languagesLearning"];
         case 3:
-          return ["bio", "hobbies", "favoriteBooks"];
+          return ["bio", "hobbies"];
         case 4:
-          return ["countriesTraveled", "countriesWantToTravel"];
-        case 5:
           return ["profilePicture", "genderPreference"];
         default:
           return [];
@@ -158,9 +147,6 @@ export const useCreateProfile = () => {
         learningLanguages: data.languagesLearning || [],
         aboutMe: data.bio,
         hobbies: data.hobbies || [],
-        visitedCountries: data.countriesTraveled || [],
-        wantToVisitCountries: data.countriesWantToTravel || [],
-        favoriteBooks: data.favoriteBooks || [],
         genderPreference: data.genderPreference,
       });
 

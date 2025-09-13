@@ -30,9 +30,6 @@ const userManagementTables = {
     spokenLanguages: v.array(v.string()),
     learningLanguages: v.array(v.string()),
     hobbies: v.array(v.string()),
-    visitedCountries: v.array(v.string()),
-    wantToVisitCountries: v.array(v.string()),
-    favoriteBooks: v.array(v.string()),
   }).index("by_userId", ["userId"]),
 
   userInformation: defineTable({
@@ -196,7 +193,7 @@ const lettersTables = {
 const notifications = {
   notifications: defineTable({
     recipientId: v.id("users"),
-    senderId: v.id("users"), // Who triggered the action for the notification
+    senderId: v.id("users"), 
     type: v.union(
       v.literal("friend_request_sent"),
       v.literal("friend_request_accepted"),
@@ -207,7 +204,7 @@ const notifications = {
       v.literal("post_reaction"),
       v.literal("post_commented"),
       v.literal("comment_replied"),
-      v.literal("letter_scheduled"), // New notification type for letters
+      v.literal("letter_scheduled"), 
     ),
     content: v.string(),
     hasUnread: v.boolean(),
@@ -217,13 +214,6 @@ const notifications = {
 }
 
 const schema = defineSchema({
-  // Only include authSessions from authTables since we're customizing users table
-  // authSessions: authTables.authSessions,
-  // authAccounts: authTables.authAccounts,
-  // authRefreshTokens: authTables.authRefreshTokens,
-  // authVerificationCodes: authTables.authVerificationCodes,
-  // authVerifiers: authTables.authVerifiers,
-  // authRateLimits: authTables.authRateLimits,
   ...authTables,
   ...userManagementTables,
   ...friendshipsTables,

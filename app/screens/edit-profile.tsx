@@ -7,16 +7,14 @@ import {
   Text,
 } from "react-native";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
-import {
-  SafeAreaView,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import { useTheme } from "@/lib/Theme";
 import { ScreenHeader } from "@/components/ScreenHeader";
 import { LoadingModal } from "@/components/common/LoadingModal";
 import { useEditProfile } from "@/hooks/useEditProfile";
 import { useTranslation } from "react-i18next";
 import { ReliableKeyboardAvoidingView } from "@/components/common/CustomKeyboardAvoidingView";
+import { Button } from "@/components/ui/Button";
 
 export default function EditProfileScreen() {
   const theme = useTheme();
@@ -64,48 +62,13 @@ export default function EditProfileScreen() {
     },
     stepContainer: {
       flex: 1,
-      paddingBottom: verticalScale(100), // Space for button
     },
     buttonContainer: {
-      position: "absolute",
-      bottom: 0,
-      left: 0,
-      right: 0,
-      backgroundColor: theme.colors.surface,
-      borderRadius: scale(theme.borderRadius.xl),
-      paddingHorizontal: scale(20),
-      paddingTop: verticalScale(16),
-      paddingBottom: verticalScale(16) + insets.bottom,
-    },
-    buttonRow: {
       flexDirection: "row",
-      gap: scale(12),
-    },
-    button: {
-      flex: 1,
-      paddingVertical: verticalScale(16),
-      borderRadius: scale(theme.borderRadius.xl),
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    primaryButton: {
-      backgroundColor: theme.colors.primary,
-    },
-    secondaryButton: {
-      backgroundColor: theme.colors.surface,
-      borderWidth: 1,
-      borderColor: theme.colors.border,
-    },
-    primaryButtonText: {
-      fontSize: moderateScale(18),
-      fontWeight: "600",
-      color: theme.colors.white,
-    },
-    secondaryButtonText: {
-      fontSize: moderateScale(18),
-      fontWeight: "600",
-      color: theme.colors.text,
-    },
+      paddingHorizontal: 18,
+      paddingVertical: 6,
+      gap: 18
+    }
   });
 
   const CurrentStepComponent = currentStepData?.component;
@@ -145,27 +108,22 @@ export default function EditProfileScreen() {
       </ReliableKeyboardAvoidingView>
 
       {/* Bottom Button */}
+        
+                  {/* Navigation Buttons */}
       <View style={styles.buttonContainer}>
-        <View style={styles.buttonRow}>
-          {!isFirstStep && (
-            <TouchableOpacity
-              style={[styles.button, styles.secondaryButton]}
-              onPress={handleBack}
-              activeOpacity={0.8}
-            >
-              <Text style={styles.secondaryButtonText}>
-                {t("common.back")}
-              </Text>
-            </TouchableOpacity>
-          )}
-          <TouchableOpacity
-            style={[styles.button, styles.primaryButton]}
-            onPress={handleNext}
-            activeOpacity={0.8}
-          >
-            <Text style={styles.primaryButtonText}>{getButtonText()}</Text>
-          </TouchableOpacity>
-        </View>
+      {!isFirstStep && (
+        <Button
+          onPress={handleBack}
+          text={t("common.back")}
+          bgColor={theme.colors.textMuted}
+          style={{flex:1}}
+        />
+      )}
+      <Button
+        onPress={handleNext}
+        text={getButtonText()}
+        style={{flex:1}}
+      />
       </View>
 
       {/* Loading Modal */}

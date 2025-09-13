@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useState } from "react";
+import React, { useRef, useMemo } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Controller, Control, FieldErrors } from "react-hook-form";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
@@ -10,7 +10,6 @@ import { Separator } from "@/components/common/Separator";
 import { LargeInputContainer } from "@/components/common/LargeInputContainer";
 import { ItemSelector } from "@/components/common/ItemSelector";
 import { SelectedItem } from "@/components/common/SelectedItem";
-import { InputModal } from "@/components/common/InputModal";
 
 interface AboutMeProps {
   control: Control<any>;
@@ -21,7 +20,6 @@ export const AboutMe: React.FC<AboutMeProps> = ({ control, errors }) => {
   const theme = useTheme();
   const { t } = useTranslation();
   const hobbiesSheetRef = useRef<ItemPickerSheetRef>(null);
-  const [showBookModal, setShowBookModal] = useState(false);
 
   const hobbyItems: PickerItem[] = useMemo(
     () =>
@@ -51,8 +49,6 @@ export const AboutMe: React.FC<AboutMeProps> = ({ control, errors }) => {
 
   });
 
-
-
   const renderSelectedHobbies = (
     hobbyIds: string[],
     onRemove: (id: string) => void
@@ -74,25 +70,6 @@ export const AboutMe: React.FC<AboutMeProps> = ({ control, errors }) => {
             />
           );
         })}
-      </>
-    );
-  };
-
-  const renderSelectedBooks = (
-    books: string[],
-    onRemove: (index: number) => void
-  ) => {
-    if (books.length === 0) return null;
-
-    return (
-      <>
-        {books.map((book, index) => (
-          <SelectedItem
-            key={index}
-            text={book}
-            onRemove={() => onRemove(index)}
-          />
-        ))}
       </>
     );
   };
@@ -153,48 +130,6 @@ export const AboutMe: React.FC<AboutMeProps> = ({ control, errors }) => {
                 onConfirm={() => hobbiesSheetRef.current?.dismiss()}
                 multiSelect={true}
                 searchPlaceholder={t("common.searchPlaceholder")}
-              />
-            </>
-          )}
-        />
-      </View>
-      <Separator customOptions={["☾ ⋆⁺₊✧ ── ✧₊⁺⋆ ☽"]} />
-      {/* Favorite Books Section */}
-      <View style={styles.section}>
-        <Text style={styles.label}>
-          {t("createProfile.aboutMe.favoriteBooks.label")}
-        </Text>
-        <Controller
-          control={control}
-          name="favoriteBooks"
-          render={({ field: { onChange, value } }) => (
-            <>
-              <ItemSelector
-                placeholder={t("createProfile.aboutMe.favoriteBooks.placeholder")}
-                hasError={!!errors.favoriteBooks}
-                onPress={() => setShowBookModal(true)}
-              >
-                {value &&
-                  value.length > 0 &&
-                  renderSelectedBooks(value, (index) => {
-                    const newBooks = value.filter(
-                      (_: string, i: number) => i !== index
-                    );
-                    onChange(newBooks);
-                  })}
-              </ItemSelector>
-              <InputModal
-                visible={showBookModal}
-                title={t("createProfile.aboutMe.booksModal.title")}
-                inputPlaceholder={t("createProfile.aboutMe.booksModal.inputPlaceholder")}
-                maxCharacters={30}
-                onSubmit={(text) => {
-                  const newBooks = [...(value || []), text];
-                  onChange(newBooks);
-                  setShowBookModal(false);
-                }}
-                onCancel={() => setShowBookModal(false)}
-                submitIcon="add"
               />
             </>
           )}

@@ -106,9 +106,6 @@ export const createProfile = mutation({
     learningLanguages: v.array(v.string()),
     aboutMe: v.string(),
     hobbies: v.array(v.string()),
-    visitedCountries: v.array(v.string()),
-    wantToVisitCountries: v.array(v.string()),
-    favoriteBooks: v.array(v.string()),
     genderPreference: v.boolean(),
   },
   handler: async (ctx, args) => {
@@ -146,9 +143,6 @@ export const createProfile = mutation({
       learningLanguages: args.learningLanguages,
       aboutMe: args.aboutMe,
       hobbies: args.hobbies,
-      visitedCountries: args.visitedCountries,
-      wantToVisitCountries: args.wantToVisitCountries,
-      favoriteBooks: args.favoriteBooks,
     });
 
     // Create userInformation record for discovery
@@ -178,9 +172,6 @@ export const updateProfile = mutation({
     learningLanguages: v.array(v.string()),
     aboutMe: v.string(),
     hobbies: v.array(v.string()),
-    visitedCountries: v.array(v.string()),
-    wantToVisitCountries: v.array(v.string()),
-    favoriteBooks: v.array(v.string()),
     genderPreference: v.boolean(),
     profilePicture: v.string(),
   },
@@ -225,9 +216,6 @@ export const updateProfile = mutation({
       learningLanguages: args.learningLanguages,
       aboutMe: args.aboutMe,
       hobbies: args.hobbies,
-      visitedCountries: args.visitedCountries,
-      wantToVisitCountries: args.wantToVisitCountries,
-      favoriteBooks: args.favoriteBooks,
     });
 
     // Update userInformation record

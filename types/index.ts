@@ -38,9 +38,6 @@ export interface UserProfile {
   aboutMe: string;
   spokenLanguageCodes: string[];
   learningLanguageCodes: string[];
-  visitedCountryCodes: string[];
-  wantToVisitCountryCodes: string[];
-  favoriteBooks: string[];
   hobbies: string[];
 }
 

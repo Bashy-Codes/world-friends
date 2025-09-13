@@ -7,20 +7,17 @@ import {
   Text,
 } from "react-native";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
-import {
-  SafeAreaView,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "@/lib/Theme";
 import { ScreenHeader } from "@/components/ScreenHeader";
 import { LoadingModal } from "@/components/common/LoadingModal";
 import { useCreateProfile } from "@/hooks/useCreateProfile";
 import { useTranslation } from "react-i18next";
 import { ReliableKeyboardAvoidingView } from "@/components/common/CustomKeyboardAvoidingView";
+import { Button } from "@/components/ui/Button";
 
 export default function CreateProfileScreen() {
   const theme = useTheme();
-  const insets = useSafeAreaInsets();
   const { t } = useTranslation();
 
   const {
@@ -70,45 +67,10 @@ export default function CreateProfileScreen() {
       borderRadius: scale(2),
     },
     buttonContainer: {
-      paddingHorizontal: scale(20),
-      paddingVertical: verticalScale(16),
-      // paddingBottom: insets.bottom,
-    },
-    buttonRow: {
       flexDirection: "row",
-      gap: scale(12),
-    },
-    button: {
-      flex: 1,
-      paddingVertical: verticalScale(16),
-      borderRadius: scale(theme.borderRadius.full),
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    primaryButton: {
-      backgroundColor: theme.colors.primary,
-    },
-    primaryButtonDisabled: {
-      backgroundColor: theme.colors.border,
-    },
-    secondaryButton: {
-      backgroundColor: theme.colors.background,
-      borderWidth: 1,
-      borderColor: theme.colors.border,
-    },
-    buttonText: {
-      fontSize: moderateScale(16),
-      fontWeight: "600",
-    },
-    primaryButtonText: {
-      color: theme.colors.white,
-    },
-    primaryButtonTextDisabled: {
-      color: theme.colors.textMuted,
-    },
-    secondaryButtonText: {
-      color: theme.colors.text,
-    },
+      paddingHorizontal: 18,
+      gap: 18
+    }
   });
 
   const CurrentStepComponent = currentStepData?.component;
@@ -116,7 +78,7 @@ export default function CreateProfileScreen() {
   return (
     <SafeAreaView style={styles.container} edges={["bottom", "left", "right"]}>
       <ScreenHeader
-        title={currentStepData?.title || "Create Profile"}
+        title={currentStepData?.title}
         onBack={handleBack}
       />
 
@@ -161,33 +123,20 @@ export default function CreateProfileScreen() {
 
           {/* Navigation Buttons */}
           <View style={styles.buttonContainer}>
-            <View style={styles.buttonRow}>
               {!isFirstStep && (
-                <TouchableOpacity
-                  style={[styles.button, styles.secondaryButton]}
+                <Button
                   onPress={handleBack}
-                  activeOpacity={0.7}
-                >
-                  <Text style={[styles.buttonText, styles.secondaryButtonText]}>
-                    {t("common.back")}
-                  </Text>
-                </TouchableOpacity>
+                  text={t("common.back")}
+                  bgColor={theme.colors.textMuted}
+                  style={{flex:1}}
+                />
               )}
 
-              <TouchableOpacity
-                style={[
-                  styles.button,
-                  styles.primaryButton,
-                  // Add disabled state styling if needed
-                ]}
+              <Button
                 onPress={handleNext}
-                activeOpacity={0.7}
-              >
-                <Text style={[styles.buttonText, styles.primaryButtonText]}>
-                  {getButtonText()}
-                </Text>
-              </TouchableOpacity>
-            </View>
+                text={getButtonText()}
+                style={{flex:1}}
+              />
           </View>
         </ScrollView>
       </ReliableKeyboardAvoidingView>

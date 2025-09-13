@@ -55,12 +55,6 @@ const hobbiesSchema = z
   .array(z.string())
   .min(1, "Please select at least one hobby");
 
-const booksSchema = z
-  .array(z.string())
-  .min(1, "Please add at least one favorite book");
-
-const countriesOptionalSchema = z.array(z.string()).optional();
-
 const profilePictureSchema = z
   .string()
   .min(1, "Please select a profile picture");
@@ -84,38 +78,11 @@ export const profileCreationSchema = z
     // Step 3: About Me
     bio: bioSchema,
     hobbies: hobbiesSchema,
-    favoriteBooks: booksSchema,
 
-    // Step 4: Travel Interests (required)
-    countriesTraveled: countriesOptionalSchema,
-    countriesWantToTravel: countriesOptionalSchema,
-
-    // Step 5: Finalize
+    // Step 4: Finalize
     profilePicture: profilePictureSchema,
     genderPreference: genderPreferenceSchema,
   })
-  .superRefine((data, ctx) => {
-    const hasVisited =
-      data.countriesTraveled && data.countriesTraveled.length > 0;
-    const wantsToVisit =
-      data.countriesWantToTravel && data.countriesWantToTravel.length > 0;
-
-    if (!hasVisited) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Please add at least one visited country",
-        path: ["countriesTraveled"],
-      });
-    }
-
-    if (!wantsToVisit) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Please add at least one country you want to visit",
-        path: ["countriesWantToTravel"],
-      });
-    }
-  });
 
 // Individual step schemas for step-by-step validation
 export const basicInfoSchema = z.object({
@@ -134,36 +101,8 @@ export const languagesCountrySchema = z.object({
 export const aboutMeSchema = z.object({
   bio: bioSchema,
   hobbies: hobbiesSchema,
-  favoriteBooks: booksSchema,
 });
 
-export const travelInterestsSchema = z
-  .object({
-    countriesTraveled: countriesOptionalSchema,
-    countriesWantToTravel: countriesOptionalSchema,
-  })
-  .superRefine((data, ctx) => {
-    const hasVisited =
-      data.countriesTraveled && data.countriesTraveled.length > 0;
-    const wantsToVisit =
-      data.countriesWantToTravel && data.countriesWantToTravel.length > 0;
-
-    if (!hasVisited) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Please add at least one visited country",
-        path: ["countriesTraveled"],
-      });
-    }
-
-    if (!wantsToVisit) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Please add at least one country you want to visit",
-        path: ["countriesWantToTravel"],
-      });
-    }
-  });
 
 export const finalizeSchema = z.object({
   profilePicture: profilePictureSchema,
@@ -184,38 +123,11 @@ export const editProfileSchema = z
     // Step 3: About Me
     bio: bioSchema,
     hobbies: hobbiesSchema,
-    favoriteBooks: booksSchema,
 
-    // Step 4: Travel Interests (required)
-    countriesTraveled: countriesOptionalSchema,
-    countriesWantToTravel: countriesOptionalSchema,
-
-    // Step 5: Finalize
+    // Step 4: Finalize
     profilePicture: profilePictureSchema,
     genderPreference: genderPreferenceSchema,
   })
-  .superRefine((data, ctx) => {
-    const hasVisited =
-      data.countriesTraveled && data.countriesTraveled.length > 0;
-    const wantsToVisit =
-      data.countriesWantToTravel && data.countriesWantToTravel.length > 0;
-
-    if (!hasVisited) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Please add at least one visited country",
-        path: ["countriesTraveled"],
-      });
-    }
-
-    if (!wantsToVisit) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Please add at least one country you want to visit",
-        path: ["countriesWantToTravel"],
-      });
-    }
-  });
 
 // Edit profile step schemas
 export const editBasicInfoSchema = z.object({
@@ -229,7 +141,6 @@ export type BasicInfoData = z.infer<typeof basicInfoSchema>;
 export type EditBasicInfoData = z.infer<typeof editBasicInfoSchema>;
 export type LanguagesCountryData = z.infer<typeof languagesCountrySchema>;
 export type AboutMeData = z.infer<typeof aboutMeSchema>;
-export type TravelInterestsData = z.infer<typeof travelInterestsSchema>;
 export type FinalizeData = z.infer<typeof finalizeSchema>;
 
 // Helper function to validate specific steps
@@ -242,8 +153,6 @@ export const validateStep = (step: number, data: any) => {
     case 3:
       return aboutMeSchema.safeParse(data);
     case 4:
-      return travelInterestsSchema.safeParse(data);
-    case 5:
       return finalizeSchema.safeParse(data);
     default:
       throw new Error("Invalid step number");
@@ -260,8 +169,6 @@ export const validateEditStep = (step: number, data: any) => {
     case 3:
       return aboutMeSchema.safeParse(data);
     case 4:
-      return travelInterestsSchema.safeParse(data);
-    case 5:
       return finalizeSchema.safeParse(data);
     default:
       throw new Error("Invalid step number");

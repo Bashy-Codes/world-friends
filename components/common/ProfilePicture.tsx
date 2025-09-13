@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import { View, StyleSheet, ViewStyle } from "react-native";
 import { Image } from "expo-image";
 import { scale } from "react-native-size-matters";

@@ -180,9 +180,6 @@ export default function UserProfileScreen() {
               aboutMe={userProfile.aboutMe}
               spokenLanguageCodes={userProfile.spokenLanguages}
               learningLanguageCodes={userProfile.learningLanguages}
-              visitedCountryCodes={userProfile.visitedCountries}
-              wantToVisitCountryCodes={userProfile.wantToVisitCountries}
-              favoriteBooks={userProfile.favoriteBooks}
               hobbies={userProfile.hobbies}
             />
           ) : activeTab === "posts" ? (

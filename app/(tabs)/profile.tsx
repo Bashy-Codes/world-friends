@@ -110,9 +110,6 @@ export default function ProfileTab() {
                 aboutMe={Profile.aboutMe}
                 spokenLanguageCodes={Profile.spokenLanguages}
                 learningLanguageCodes={Profile.learningLanguages}
-                visitedCountryCodes={Profile.visitedCountries}
-                wantToVisitCountryCodes={Profile.wantToVisitCountries}
-                favoriteBooks={Profile.favoriteBooks}
                 hobbies={Profile.hobbies}
               />
               <Separator customOptions={["⋆｡✿ ⋆ ── ⋆ ✿｡⋆"]} />
