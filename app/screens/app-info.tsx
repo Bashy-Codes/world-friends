@@ -14,9 +14,11 @@ import { ScreenHeader } from "@/components/ScreenHeader";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { ActionItem } from "@/components/common/ActionItem";
 import { Button } from "@/components/ui/Button";
+import { useTranslation } from "react-i18next";
 
 export default function AppInfoScreen() {
   const theme = useTheme();
+  const { t } = useTranslation();
 
 
   const handleConvexPress = () => {
@@ -33,7 +35,7 @@ export default function AppInfoScreen() {
       style={[styles.container, { backgroundColor: theme.colors.background }]}
       edges={["left", "right", "bottom"]}
     >
-      <ScreenHeader title="Platform Info" />
+      <ScreenHeader title={t("screenTitles.appInfo")} />
 
       <ScrollView
         style={styles.scrollContainer}
@@ -62,7 +64,7 @@ export default function AppInfoScreen() {
         {/* Convex Section*/}
         <View style={styles.convexSection}>
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
-            Proudly Sponsored By
+            {t("appInfo.sponseredBy")}
           </Text>
           <View
             style={[
@@ -81,7 +83,7 @@ export default function AppInfoScreen() {
               />
             </View>
             <Text style={[styles.convexDescription, { color: theme.colors.textSecondary }]}>
-             The life changing Reactive Backend as a Service for Software Developers
+             {t("appInfo.convexDesc")}
             </Text>
             <View style={styles.convexLocationContainer}>
               <Ionicons
@@ -104,7 +106,7 @@ export default function AppInfoScreen() {
         {/* About Section */}
         <View style={styles.section}>
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
-            About This Platform
+             {t("appInfo.aboutApp")}
           </Text>
           <View
             style={[
@@ -116,10 +118,7 @@ export default function AppInfoScreen() {
             ]}
           >
             <Text style={[styles.aboutText, { color: theme.colors.text }]}>
-              WorldFriends is a passion project built by a dedicated high school student 
-              who believes in the power of global connections. This platform brings together 
-              people from different cultures, languages, and backgrounds to create meaningful 
-              friendships that transcend borders.
+               {t("appInfo.infoDesc")}
             </Text>
           </View>
         </View>
@@ -127,14 +126,14 @@ export default function AppInfoScreen() {
         {/* Contact Section */}
         <View style={styles.section}>
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
-            Get In Touch
+          {t("appInfo.getInTouch")}
           </Text>
          <ActionItem
             icon="mail-outline"
             iconColor={theme.colors.success}
             iconBgColor={`${theme.colors.info}15`}
-            title="Contact Us"
-            description="Have questions or need support? Reach out to us!"
+            title={t("settings.contact.title")}
+            description={t("settings.contact.description")}
             type="navigation"
             onPress={handleEmailPress}
           />
@@ -143,10 +142,10 @@ export default function AppInfoScreen() {
         {/* Footer */}
         <View style={styles.footer}>
           <Text style={[styles.footerText, { color: theme.colors.textMuted }]}>
-            Made with ❤️ by a student
+            {t("appInfo.footerText")}
           </Text>
           <Text style={[styles.footerText, { color: theme.colors.textMuted }]}>
-            © 2025 WorldFriends • Version 1.0.0
+           {t("appInfo.appVersion")}
           </Text>
         </View>
       </ScrollView>
@@ -163,7 +162,6 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingHorizontal: scale(20),
-    paddingBottom: verticalScale(40),
   },
   heroSection: {
     alignItems: "center",

@@ -24,7 +24,8 @@
     "composeLetter": "Compose Letter",
     "letters": "Letters",
     "letter": "Letter",
-    "supporter": "Become a Supporter"
+    "supporter": "Become a Supporter",
+    "appInfo": "Platform Info"
   }, 
   "common": {
     "continue": "Continue",
@@ -150,6 +151,14 @@
     "platformInfo": {
       "title": "Platform Info",
       "description": "Learn more about our platform and guidelines"
+    },
+    "supportApp": {
+      "title": "Support the Platform",
+      "description": "You can become a Supporter!"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Have questions or need support? Reach out to us!"
     }
   },
   "actions": {
@@ -450,6 +459,15 @@
     "ctaButton": "Become a Supporter - ",
     "ctaNote": "One-time payment • Powered by RevenueCat",
     "thankYou": " Thank you for your support! ❤️"
+  },
+  "appInfo": {
+    "sponseredBy": "Proudly Sponsered By",
+    "convexDesc": "The life chaning Reactive Backend as a Service for Software Developers",
+    "aboutApp": "About This Platform",
+    "infoDesc": "WorldFriends is a passion project built by a dedicated student who believes in the power of global connections. This platform brings together people from different cultures, languages, and backgrounds to learn about the world",
+    "getInTouch": "Get In Touch",
+    "footerText": "Made with ❤️ by a student",
+    "appVersion": "© 2025 WorldFriends • Version 1.0.0"
   },
   "auth": {
     "signupTitle": "Create Account",

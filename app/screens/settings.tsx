@@ -262,8 +262,8 @@ export default function SettingsScreen() {
             icon="heart"
             iconColor={theme.colors.secondary}
             iconBgColor={`${theme.colors.secondary}15`}
-            title={"Support the Platform"}
-            description={"You can become a supporter!"}
+            title={t("settings.supportApp.title")}
+            description={t("settings.supportApp.description")}
             type="navigation"
             onPress={handleDonatePress}
           />
@@ -272,8 +272,8 @@ export default function SettingsScreen() {
             icon="mail-outline"
             iconColor={theme.colors.success}
             iconBgColor={`${theme.colors.info}15`}
-            title="Contact Us"
-            description="Have questions or need support? Reach out to us!"
+            title={t("settings.contact.title")}
+            description={t("settings.contact.description")}
             type="navigation"
             onPress={handleContactPress}
           />
