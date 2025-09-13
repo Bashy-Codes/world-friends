@@ -1,0 +1,367 @@
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Linking,
+  Image,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
+import { useTheme } from "@/lib/Theme";
+import { ScreenHeader } from "@/components/ScreenHeader";
+import { scale, verticalScale, moderateScale } from "react-native-size-matters";
+import { ActionItem } from "@/components/common/ActionItem";
+
+export default function AppInfoScreen() {
+  const theme = useTheme();
+
+
+  const handleConvexPress = () => {
+    Linking.openURL("https://convex.dev");
+  };
+
+  const handleEmailPress = () => {
+    Linking.openURL("mailto:hello@worldfriends.app");
+  };
+
+
+  return (
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: theme.colors.background }]}
+      edges={["left", "right", "bottom"]}
+    >
+      <ScreenHeader title="Platform Info" />
+
+      <ScrollView
+        style={styles.scrollContainer}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.contentContainer}
+      >
+        {/* Hero Section */}
+        <View style={styles.heroSection}>
+          <View
+            style={[
+              styles.logoContainer,
+              { backgroundColor: theme.colors.surface },
+            ]}
+          >
+            <Image
+              source={require("../../assets/images/logo.png")}
+              style={styles.logoImage}
+              resizeMode="contain"
+            />
+          </View>
+          <Text style={[styles.appName, { color: theme.colors.text }]}>
+            WorldFriends
+          </Text>
+          <Text style={[styles.tagline, { color: theme.colors.textSecondary }]}>
+            Connect • Learn • Explore
+          </Text>
+        </View>
+
+        {/* Convex Section*/}
+        <View style={styles.convexSection}>
+          <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
+            Proudly Sponsored By
+          </Text>
+          <View
+            style={[
+              styles.convexCard,
+              {
+                backgroundColor: theme.colors.surface,
+                borderColor: theme.colors.primary + "30",
+              },
+            ]}
+          >
+            <View style={styles.convexImageContainer}>
+              <Image
+                source={require("../../assets/images/convex.png")}
+                style={styles.convexImage}
+                resizeMode="contain"
+              />
+            </View>
+            <Text style={[styles.convexDescription, { color: theme.colors.textSecondary }]}>
+             The open-source reactive database for app developers
+            </Text>
+            <View style={styles.convexLocationContainer}>
+              <Ionicons
+                name="location-outline"
+                size={scale(16)}
+                color={theme.colors.error}
+              />
+              <Text style={[styles.convexLocation, { color: theme.colors.textMuted }]}>
+                San Francisco, CA
+              </Text>
+            </View>
+            <TouchableOpacity
+              style={[
+                styles.convexButton,
+                { backgroundColor: theme.colors.primary },
+              ]}
+              onPress={handleConvexPress}
+              activeOpacity={0.8}
+            >
+              <Text style={[styles.convexButtonText, { color: theme.colors.white }]}>
+              About Convex
+              </Text>
+              <Ionicons
+                name="information-circle"
+                size={scale(16)}
+                color={theme.colors.white}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* About Section */}
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
+            About This Platform
+          </Text>
+          <View
+            style={[
+              styles.aboutCard,
+              { 
+                backgroundColor: theme.colors.surface,
+                borderColor: theme.colors.border,
+              },
+            ]}
+          >
+            <Text style={[styles.aboutText, { color: theme.colors.text }]}>
+              WorldFriends is a passion project built by a dedicated high school student 
+              who believes in the power of global connections. This platform brings together 
+              people from different cultures, languages, and backgrounds to create meaningful 
+              friendships that transcend borders.
+            </Text>
+          </View>
+        </View>
+
+        {/* Contact Section */}
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
+            Get In Touch
+          </Text>
+         <ActionItem
+            icon="mail-outline"
+            iconColor={theme.colors.success}
+            iconBgColor={`${theme.colors.info}15`}
+            title="Contact Us"
+            description="Have questions or need support? Reach out to us!"
+            type="navigation"
+            onPress={handleEmailPress}
+          />
+        </View>
+
+        {/* Footer */}
+        <View style={styles.footer}>
+          <Text style={[styles.footerText, { color: theme.colors.textMuted }]}>
+            Made with ❤️ by a high school student
+          </Text>
+          <Text style={[styles.footerText, { color: theme.colors.textMuted }]}>
+            © 2025 WorldFriends • Version 1.0.0
+          </Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  scrollContainer: {
+    flex: 1,
+  },
+  contentContainer: {
+    paddingHorizontal: scale(20),
+    paddingBottom: verticalScale(40),
+  },
+  heroSection: {
+    alignItems: "center",
+    paddingVertical: verticalScale(32),
+  },
+  logoContainer: {
+    width: scale(120),
+    height: scale(120),
+    borderRadius: scale(60),
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: verticalScale(16),
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  logoImage: {
+    width: scale(80),
+    height: scale(80),
+  },
+  appName: {
+    fontSize: moderateScale(28),
+    fontWeight: "700",
+    marginBottom: verticalScale(8),
+  },
+  tagline: {
+    fontSize: moderateScale(16),
+    fontWeight: "500",
+    marginBottom: verticalScale(12),
+  },
+  locationContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: scale(4),
+  },
+  location: {
+    fontSize: moderateScale(14),
+    fontWeight: "400",
+  },
+  section: {
+    marginBottom: verticalScale(32),
+  },
+  sectionTitle: {
+    fontSize: moderateScale(20),
+    fontWeight: "700",
+    marginBottom: verticalScale(16),
+  },
+  infoCard: {
+    borderRadius: scale(16),
+    borderWidth: 1,
+    marginBottom: verticalScale(12),
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  cardContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: scale(16),
+  },
+  iconContainer: {
+    width: scale(48),
+    height: scale(48),
+    borderRadius: scale(24),
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: scale(16),
+  },
+  textContainer: {
+    flex: 1,
+  },
+  cardTitle: {
+    fontSize: moderateScale(16),
+    fontWeight: "600",
+    marginBottom: verticalScale(4),
+  },
+  cardDescription: {
+    fontSize: moderateScale(14),
+    lineHeight: moderateScale(20),
+  },
+  aboutCard: {
+    borderRadius: scale(16),
+    borderWidth: 1,
+    padding: scale(20),
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  aboutText: {
+    fontSize: moderateScale(15),
+    lineHeight: moderateScale(22),
+    textAlign: "center",
+  },
+  footer: {
+    alignItems: "center",
+    paddingTop: verticalScale(20),
+    borderTopWidth: 1,
+    borderTopColor: "rgba(0,0,0,0.1)",
+  },
+  footerText: {
+    fontSize: moderateScale(12),
+    textAlign: "center",
+    marginBottom: verticalScale(4),
+  },
+  // Convex Section Styles
+  convexSection: {
+    marginBottom: verticalScale(40),
+    paddingVertical: verticalScale(20),
+    
+  },
+  convexImageContainer: {
+   backgroundColor: "#eeeeeeff",
+    width: scale(200),
+    height: scale(100),
+    borderRadius: scale(50),
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: verticalScale(16),
+  },
+  convexImage: {
+    width: scale(180),
+    height: scale(80),
+  },
+  convexCard: {
+    alignItems: "center",
+    borderRadius: scale(20),
+    borderWidth: 2,
+    padding: scale(24),
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    elevation: 8,
+  },
+
+  convexDescription: {
+    fontSize: moderateScale(16),
+    lineHeight: moderateScale(24),
+    textAlign: "center",
+    marginBottom: verticalScale(20),
+  },
+  convexLocationContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: scale(4),
+    marginBottom: verticalScale(24),
+  },
+  convexLocation: {
+    fontSize: moderateScale(14),
+    fontWeight: "500",
+  },
+  convexButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: verticalScale(16),
+    paddingHorizontal: scale(24),
+    borderRadius: scale(24),
+    gap: scale(8),
+  },
+  convexButtonText: {
+    fontSize: moderateScale(16),
+    fontWeight: "600",
+  },
+});
