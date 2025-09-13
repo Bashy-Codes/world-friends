@@ -8,11 +8,11 @@ import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { Button } from "@/components/ui/Button";
 import { useRevenueCat } from "@/hooks/useRevenueCat";
 import Toast from "react-native-toast-message";
+import { useTranslation } from "react-i18next";
 
 export default function SupporterScreen() {
     const theme = useTheme();
-
-
+    const { t } = useTranslation();
 
     // RevenueCat hook
     const {
@@ -68,7 +68,7 @@ export default function SupporterScreen() {
 
     return (
         <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.background }]} edges={["left", "right"]}>
-            <ScreenHeader title="Become a Supporter" />
+            <ScreenHeader title={t("screenTitles.supporter")} />
 
             <ScrollView
                 style={styles.scrollContainer}
@@ -81,21 +81,18 @@ export default function SupporterScreen() {
                         <Ionicons name="heart" size={scale(48)} color={theme.colors.primary} />
                     </View>
                     <Text style={[styles.title, { color: theme.colors.text }]}>
-                        Support WorldFriends
-                    </Text>
-                    <Text style={[styles.subtitle, { color: theme.colors.textSecondary }]}>
-                        Help student developers keep the platform alive!
+                       {t("supporter.title")}
                     </Text>
                 </View>
 
                 {/* Explanation Section */}
                 <View style={styles.section}>
                     <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
-                        Why Become a Supporter?
+                      {t("supporter.whySectionTitle")}
                     </Text>
                     <View style={[styles.card, { backgroundColor: theme.colors.surface }]}>
                         <Text style={[styles.cardText, { color: theme.colors.text }]}>
-                            WorldFriends is a passion project built by a solo high school student. Your one-time $2.99 donation helps support ongoing development and ensures that the app remains free and accessible to everyone.
+                           {t("supporter.whySectionDesc")}
                         </Text>
                     </View>
                 </View>
@@ -103,25 +100,25 @@ export default function SupporterScreen() {
                 {/* Benefits Section */}
                 <View style={styles.section}>
                     <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
-                        What You Get
+                       {t("supporter.getSection.title")}
                     </Text>
                     <View style={[styles.card, { backgroundColor: theme.colors.surface }]}>
                         <View style={styles.benefitItem}>
                             <Ionicons name="heart" size={scale(20)} color={theme.colors.error} />
                             <Text style={[styles.benefitText, { color: theme.colors.text }]}>
-                                Special supporter heart badge on your profile
+                                {t("supporter.getSection.firstBenefit")}
                             </Text>
                         </View>
                         <View style={styles.benefitItem}>
                             <Ionicons name="star" size={scale(20)} color={theme.colors.warning} />
                             <Text style={[styles.benefitText, { color: theme.colors.text }]}>
-                                Eternal gratitude and supporter status
+                                {t("supporter.getSection.secondBenefit")}
                             </Text>
                         </View>
                         <View style={styles.benefitItem}>
                             <Ionicons name="earth" size={scale(20)} color={theme.colors.primary} />
                             <Text style={[styles.benefitText, { color: theme.colors.text }]}>
-                                Contribute to connecting people worldwide
+                               {t("supporter.getSection.thirdBenefit")}
                             </Text>
                         </View>
                     </View>
@@ -131,19 +128,19 @@ export default function SupporterScreen() {
                 <View style={styles.ctaSection}>
                     <Button
                         iconName="heart"
-                        text={`Become a Supporter - ${packagePrice}`}
+                        text={t("supporter.ctaButton") + packagePrice}
                         onPress={handleDonate}
                         disabled={isPurchasing || isRestoring}
                     />
                     <Text style={[styles.ctaNote, { color: theme.colors.textMuted }]}>
-                        One-time payment • Powered by RevenueCat
+                        {t("supporter.ctaNote")}
                     </Text>
                 </View>
 
                 {/* Footer */}
                 <View style={styles.footer}>
                     <Text style={[styles.footerText, { color: theme.colors.textMuted }]}>
-                        Thank you for your support! ❤️
+                        {t("supporter.thankYou")}
                     </Text>
                 </View>
             </ScrollView>
@@ -178,11 +175,6 @@ const styles = StyleSheet.create({
         fontSize: moderateScale(28),
         fontWeight: "700",
         marginBottom: verticalScale(8),
-    },
-    subtitle: {
-        fontSize: moderateScale(16),
-        fontWeight: "500",
-        textAlign: "center",
     },
     section: {
         marginBottom: verticalScale(32),

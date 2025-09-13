@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
   Linking,
   Image,
 } from "react-native";
@@ -14,6 +13,7 @@ import { useTheme } from "@/lib/Theme";
 import { ScreenHeader } from "@/components/ScreenHeader";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { ActionItem } from "@/components/common/ActionItem";
+import { Button } from "@/components/ui/Button";
 
 export default function AppInfoScreen() {
   const theme = useTheme();
@@ -49,16 +49,13 @@ export default function AppInfoScreen() {
             ]}
           >
             <Image
-              source={require("../../assets/images/logo.png")}
+              source={require("@/assets/images/logo.png")}
               style={styles.logoImage}
               resizeMode="contain"
             />
           </View>
           <Text style={[styles.appName, { color: theme.colors.text }]}>
             WorldFriends
-          </Text>
-          <Text style={[styles.tagline, { color: theme.colors.textSecondary }]}>
-            Connect • Learn • Explore
           </Text>
         </View>
 
@@ -78,13 +75,13 @@ export default function AppInfoScreen() {
           >
             <View style={styles.convexImageContainer}>
               <Image
-                source={require("../../assets/images/convex.png")}
+                source={require("@/assets/images/convex.png")}
                 style={styles.convexImage}
                 resizeMode="contain"
               />
             </View>
             <Text style={[styles.convexDescription, { color: theme.colors.textSecondary }]}>
-             The open-source reactive database for app developers
+             The life changing Reactive Backend as a Service for Software Developers
             </Text>
             <View style={styles.convexLocationContainer}>
               <Ionicons
@@ -93,26 +90,14 @@ export default function AppInfoScreen() {
                 color={theme.colors.error}
               />
               <Text style={[styles.convexLocation, { color: theme.colors.textMuted }]}>
-                San Francisco, CA
+                San Francisco, CA 🇺🇸
               </Text>
             </View>
-            <TouchableOpacity
-              style={[
-                styles.convexButton,
-                { backgroundColor: theme.colors.primary },
-              ]}
+            <Button
+              iconName="information-circle-sharp"
+              text="About Convex"
               onPress={handleConvexPress}
-              activeOpacity={0.8}
-            >
-              <Text style={[styles.convexButtonText, { color: theme.colors.white }]}>
-              About Convex
-              </Text>
-              <Ionicons
-                name="information-circle"
-                size={scale(16)}
-                color={theme.colors.white}
-              />
-            </TouchableOpacity>
+            />
           </View>
         </View>
 
@@ -158,7 +143,7 @@ export default function AppInfoScreen() {
         {/* Footer */}
         <View style={styles.footer}>
           <Text style={[styles.footerText, { color: theme.colors.textMuted }]}>
-            Made with ❤️ by a high school student
+            Made with ❤️ by a student
           </Text>
           <Text style={[styles.footerText, { color: theme.colors.textMuted }]}>
             © 2025 WorldFriends • Version 1.0.0
@@ -208,11 +193,6 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(28),
     fontWeight: "700",
     marginBottom: verticalScale(8),
-  },
-  tagline: {
-    fontSize: moderateScale(16),
-    fontWeight: "500",
-    marginBottom: verticalScale(12),
   },
   locationContainer: {
     flexDirection: "row",
@@ -350,18 +330,5 @@ const styles = StyleSheet.create({
   convexLocation: {
     fontSize: moderateScale(14),
     fontWeight: "500",
-  },
-  convexButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: verticalScale(16),
-    paddingHorizontal: scale(24),
-    borderRadius: scale(24),
-    gap: scale(8),
-  },
-  convexButtonText: {
-    fontSize: moderateScale(16),
-    fontWeight: "600",
-  },
+  }
 });

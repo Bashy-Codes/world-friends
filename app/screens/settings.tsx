@@ -83,12 +83,6 @@ export default function SettingsScreen() {
       await signOut();
       convex.clearAuth();
       setShowLogoutModal(false);
-      Toast.show({
-        type: "success",
-        text1: t("successToasts.loggedOut.text1"),
-        text2: t("successToasts.loggedOut.text2"),
-        position: "top",
-      });
       router.replace("/(auth)/auth");
     } catch (error) {
       console.error("Logout error:", error);
@@ -204,7 +198,7 @@ export default function SettingsScreen() {
             iconColor={theme.colors.secondary}
             iconBgColor={`${theme.colors.secondary}15`}
             title={t("settings.theme.title")}
-            description="⋆｡˚ ☁︎ ˚｡⋆｡˚☽˚｡⋆🎨"
+            description="🎨⋆｡˚ ☁︎ ˚｡⋆｡˚☁︎ ˚｡⋆🎨"
             type="toggle"
             value={theme.isDark}
             onValueChange={handleThemeToggle}

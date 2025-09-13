@@ -255,7 +255,7 @@ export const MessageInput: React.FC<MessageInputProps> = ({
             disabled={!message.trim() || isSending}
           >
             <Ionicons
-              name={isSending ? "hourglass" : "send"}
+              name="send"
               size={scale(18)}
               color={
                 message.trim() ? theme.colors.white : theme.colors.textMuted

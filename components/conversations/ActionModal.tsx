@@ -177,7 +177,7 @@ export const ActionModal: React.FC<ActionModalProps> = ({
                 </View>
                 <View style={styles.actionContent}>
                   <Text style={[styles.actionTitle, styles.deleteTitle]}>
-                    {t("conversation.deleteMessage")}
+                    {t("actions.deleteMessage")}
                   </Text>
                 </View>
               </TouchableOpacity>

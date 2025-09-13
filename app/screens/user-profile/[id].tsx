@@ -208,8 +208,8 @@ export default function UserProfileScreen() {
       />
       <InputModal
         visible={showRequestModal}
-        title={t("friendRequestModal.title")}
-        inputPlaceholder={t("friendRequestModal.placeholder")}
+        title={t("profile.friendRequestModal.title")}
+        inputPlaceholder={t("profile.friendRequestModal.placeholder") + userProfile.name}
         maxCharacters={400}
         onSubmit={handleSendFriendRequest}
         onCancel={handleCancelRequest}

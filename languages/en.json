@@ -23,7 +23,8 @@
     },
     "composeLetter": "Compose Letter",
     "letters": "Letters",
-    "letter": "Letter"
+    "letter": "Letter",
+    "supporter": "Become a Supporter"
   }, 
   "common": {
     "continue": "Continue",
@@ -80,7 +81,7 @@
       "collections": "You must be friends to view this user's collections"
     },
     "friendRequestModal.title": "Send Friend Request",
-    "friendRequestModal.placeholder": "Write a message to introduce yourself..."
+    "friendRequestModal.placeholder": "Write a message to introduce yourself to "
   },
   "createPost": {
     "placeholder": "What's on your mind?",
@@ -158,6 +159,7 @@
     "reportPost": "Report Post",
     "reportUser": "Report User",
     "blockUser": "Block User",
+    "removeFriend": "Remove Friend",
     "deleteConversation": "Delete Conversation",
     "deleteMessage": "Delete Message",
     "deleteLetter": "Delete Letter"
@@ -217,7 +219,7 @@
     "user": "User",
     "post": "Post",
     "postTitle": "Post Title",
-    "description": "Description",
+    "description": "Help us keep our community safe by reporting inappropriate content",
     "sections": {
       "issue": "What's the issue?",
       "details": "Additional Details",
@@ -246,7 +248,7 @@
       }
     },
     "detailsPlaceholder": "Please provide additional details...",
-    "evidenceDescription": "Optional: Add a screenshot or other evidence",
+    "evidenceDescription": "Required: Add a screenshot or other evidence",
     "addScreenshot": "Add Screenshot",
     "submitReport": "Submit Report"
   },
@@ -434,6 +436,20 @@
       "text1": "Photo Library Permission Required",
       "text2": "Please grant photo library permission to select photos"
     }
+  },
+  "supporter": {
+    "title": "Support WorldFriends",
+    "whySectionTitle": "Why Become a Supporter ?",
+    "whySectionDesc": " WorldFriends is a passion project built by a solo developer. Your one-time $2.99 donation helps support ongoing development and ensures that the app remains free and accessible to everyone",
+    "getSection": {
+      "title":  "What You Get",
+      "firstBenefit": "Special supporter heart badge on your profile",
+      "secondBenefit": "Eternal gratitude and supporter status",
+      "thirdBenefit": "Contribute to connecting people worldwide"
+    },
+    "ctaButton": "Become a Supporter - ",
+    "ctaNote": "One-time payment • Powered by RevenueCat",
+    "thankYou": " Thank you for your support! ❤️"
   },
   "auth": {
     "signupTitle": "Create Account",

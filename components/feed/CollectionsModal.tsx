@@ -66,13 +66,7 @@ const CollectionItem: React.FC<{
       fontWeight: "700",
       color: theme.colors.text,
       marginBottom: verticalScale(4),
-    },
-    postsCount: {
-      fontSize: moderateScale(14),
-      color: theme.colors.textMuted,
-      fontWeight: "500",
-      marginBottom: verticalScale(8),
-    },
+    }
   });
 
   return (
@@ -91,9 +85,6 @@ const CollectionItem: React.FC<{
       <View style={styles.contentContainer}>
         <Text style={styles.title} numberOfLines={1}>
           {collection.title}
-        </Text>
-        <Text style={styles.postsCount}>
-          {collection.postCount} {collection.postCount === 1 ? t("collections.post") : t("collections.posts")}
         </Text>
       </View>
     </TouchableOpacity>

@@ -22,6 +22,8 @@ import { api } from "@/convex/_generated/api";
 import { uploadImageToConvex } from "@/utils/uploadImages";
 import { Id } from "@/convex/_generated/dataModel";
 import Toast from "react-native-toast-message";
+import { InfoSection } from "@/components/feed/InfoSection";
+import { Button } from "@/components/ui/Button";
 
 type ReportType =
   | "harassment"
@@ -315,7 +317,7 @@ export default function ReportScreen() {
   return (
     <SafeAreaView style={styles.container} edges={["left", "right", "bottom"]}>
       <ScreenHeader
-        title={`${t("screenTitles.report")} ${params.type === "user" ? t("report.user") : t("report.postTitle")}`}
+        title={`${t("screenTitles.report")} ${params.type === "user" ? t("report.user") : t("report.post")}`}
         onBack={() => router.back()}
       />
 
@@ -324,14 +326,7 @@ export default function ReportScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.content}>
-          {/* Description */}
-          <View style={styles.section}>
-            <Text style={styles.description}>
-              {t("report.description")}
-              {params.targetName &&
-                ` ${t("report.reporting")} ${params.type === "user" ? t("report.user") : t("report.post")} "${params.targetName}".`}
-            </Text>
-          </View>
+          <InfoSection infoMessage={t("report.description")} icon="shield-half-outline"/>
 
           {/* Report Type Selection */}
           <View style={styles.section}>
@@ -437,29 +432,11 @@ export default function ReportScreen() {
           </View>
 
           {/* Submit Button */}
-          <TouchableOpacity
-            style={[
-              styles.submitButton,
-              (!selectedType ||
-                !reason.trim() ||
-                !attachmentUri ||
-                isSubmitting) &&
-                styles.submitButtonDisabled,
-            ]}
-            onPress={handleSubmit}
-            disabled={
-              !selectedType || !reason.trim() || !attachmentUri || isSubmitting
-            }
-            activeOpacity={0.7}
-          >
-            {isSubmitting ? (
-              <ActivityIndicator size="small" color="#FFFFFF" />
-            ) : (
-              <Text style={styles.submitButtonText}>
-                {t("report.submitReport")}
-              </Text>
-            )}
-          </TouchableOpacity>
+         <Button
+          text={t("report.submitReport")}
+          onPress={handleSubmit}
+          disabled={!selectedType || !reason.trim() || !attachmentUri || isSubmitting}
+          />
         </View>
       </ScrollView>
 
