@@ -10,7 +10,7 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "@/lib/Theme";
 import { LetterCardProps } from "@/types";
 import { getCountryByCode } from "@/constants/geographics";
-import { ProfilePicture } from "@/components/common/ProfilePicture";
+import { ProfilePicture } from "@/components/common/TinyProfilePicture";
 import { ActionSheet, ActionSheetRef } from "@/components/common/ActionSheet";
 import { useTranslation } from "react-i18next";
 import { Image } from "expo-image";

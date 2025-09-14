@@ -4,14 +4,14 @@ import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { useTheme } from "@/lib/Theme";
-import { ProfilePicture } from "@/components/common/ProfilePicture";
+import { ProfilePicture } from "@/components/common/TinyProfilePicture";
 import { Id } from "@/convex/_generated/dataModel";
 
 interface ConversationHeaderProps {
   otherUser: {
     userId: Id<"users">;
     name: string;
-    profilePicture: string | null;
+    profilePicture: string;
     isAdmin?: boolean;
     isSupporter?: boolean;
   };
@@ -118,10 +118,8 @@ export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
         <View style={styles.profileSection}>
           <View style={styles.profilePicture}>
             <ProfilePicture
-              profilePicture={otherUser.profilePicture || undefined}
+              profilePicture={otherUser.profilePicture}
               size={40}
-              lazy={false}
-              priority="high"
             />
           </View>
 

@@ -13,7 +13,7 @@ export interface ConversationData {
   otherUser: {
     userId: Id<"users">;
     name: string;
-    profilePicture: string | null;
+    profilePicture: string;
     isAdmin?: boolean;
     isSupporter?: boolean;
   };
@@ -58,7 +58,7 @@ export interface ConversationInfo {
   otherUser: {
     userId: Id<"users">;
     name: string;
-    profilePicture: string | null;
+    profilePicture: string;
     isAdmin?: boolean;
     isSupporter?: boolean;
   };

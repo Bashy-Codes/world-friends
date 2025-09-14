@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Modal, FlatList, Dimensions, 
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { usePaginatedQuery } from "convex/react";
 import { useTheme } from "@/lib/Theme";
-import { ProfilePicture } from "@/components/common/ProfilePicture";
+import { ProfilePicture } from "@/components/common/TinyProfilePicture";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { EmptyState } from "@/components/EmptyState";

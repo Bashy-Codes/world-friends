@@ -6,10 +6,10 @@ import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { useTheme } from "@/lib/Theme";
 import { getCountryByCode, getLanguageByCode } from "@/constants/geographics";
 import type { UserCardData } from "@/types/discover";
-import { ProfilePicture } from "@/components/common/ProfilePicture";
 import { useTranslation } from "react-i18next";
 import { Id } from "@/convex/_generated/dataModel";
 import AgeGenderChip from "../ui/AgeGenderChip";
+import ProfilePhoto from "../ui/ProfilePhoto";
 
 interface UserCardProps {
   user: UserCardData;
@@ -125,12 +125,9 @@ const UserCardComponent: React.FC<UserCardProps> = ({
 
   return (
     <TouchableOpacity onPress={handleViewProfile} activeOpacity={0.8} style={styles.card}>
-      <ProfilePicture
-        profilePicture={user.profilePicture}
-        size={120}
-        style={styles.profileImageContainer}
-        lazy={true}
-        priority="low"
+     <ProfilePhoto
+      profilePicture={user.profilePicture}
+      size="large"
       />
 
       <View style={styles.nameContainer}>

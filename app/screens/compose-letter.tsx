@@ -10,7 +10,7 @@ import { getCountryByCode } from "@/constants/geographics";
 
 // components
 import { ScreenHeader } from "@/components/ScreenHeader";
-import { ProfilePicture } from "@/components/common/ProfilePicture";
+import { ProfilePicture } from "@/components/common/TinyProfilePicture";
 import { ConfirmationModal } from "@/components/common/ConfirmationModal";
 import { LoadingModal } from "@/components/common/LoadingModal";
 import { FriendsPickerSheet } from "@/components/letters/FriendsPickerSheet";

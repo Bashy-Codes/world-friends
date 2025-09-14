@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { useTheme } from "@/lib/Theme";
-import { ProfilePicture } from "@/components/common/ProfilePicture";
+import { ProfilePicture } from "@/components/common/TinyProfilePicture";
 import { formatTimeAgo } from "@/utils/formatTime";
 import { ConversationData } from "@/types/conversations";
 
@@ -125,10 +125,8 @@ export const ConversationItem: React.FC<ConversationItemProps> = ({
         {/* Profile Section */}
         <View style={styles.profileSection}>
           <ProfilePicture
-            profilePicture={conversation.otherUser.profilePicture || undefined}
+            profilePicture={conversation.otherUser.profilePicture}
             size={52}
-            lazy={true}
-            priority="normal"
           />
         </View>
 

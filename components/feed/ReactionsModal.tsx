@@ -9,7 +9,7 @@ import { Id } from "@/convex/_generated/dataModel";
 import { api } from "@/convex/_generated/api";
 import { usePaginatedQuery } from "convex/react";
 import { formatTimeAgo } from "@/utils/formatTime";
-import { ProfilePicture } from "@/components/common/ProfilePicture";
+import { ProfilePicture } from "@/components/common/TinyProfilePicture";
 import { FlashList } from "@shopify/flash-list";
 import { EmptyState } from "@/components/EmptyState";
 import { Button } from "../ui/Button";
