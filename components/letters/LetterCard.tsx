@@ -10,10 +10,10 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "@/lib/Theme";
 import { LetterCardProps } from "@/types";
 import { getCountryByCode } from "@/constants/geographics";
-import { ProfilePicture } from "@/components/common/TinyProfilePicture";
 import { ActionSheet, ActionSheetRef } from "@/components/common/ActionSheet";
 import { useTranslation } from "react-i18next";
 import { Image } from "expo-image";
+import AgeGenderChip from "../ui/AgeGenderChip";
 
 
 export const LetterCard: React.FC<LetterCardProps> = ({
@@ -44,25 +44,9 @@ export const LetterCard: React.FC<LetterCardProps> = ({
     }
   };
 
-  const getTimeDisplay = () => {
-    if (isReceived) {
-      // For received letters, show number of days ago
-      const daysAgo = Math.floor((Date.now() - letter.createdAt) / (1000 * 60 * 60 * 24));
-      return daysAgo === 0 ? "0" : `${daysAgo}`;
-    } else {
-      // For sent letters, show delivery status
-      if (letter.isDelivered) {
-        return "✓";
-      } else {
-        const days = letter.daysUntilDelivery || 0;
-        return `${days}`;
-      }
-    }
-  };
-
   const getStatusColor = () => {
     if (isReceived) {
-      return theme.colors.textSecondary;
+      return theme.colors.success;
     } else {
       return letter.isDelivered ? theme.colors.success : theme.colors.textMuted;
     }
@@ -106,17 +90,28 @@ export const LetterCard: React.FC<LetterCardProps> = ({
     },
     userInfo: {
       flex: 1,
-      marginLeft: scale(12),
     },
     userName: {
       fontSize: moderateScale(20),
       fontWeight: "600",
       color: theme.colors.text,
       marginBottom: verticalScale(2),
+      marginLeft: scale(10),
     },
     userDetails: {
       fontSize: moderateScale(12),
       color: theme.colors.textSecondary,
+    },
+    flagContainer: {
+      backgroundColor: theme.colors.background,
+      width: scale(90),
+      height: scale(90),
+      borderRadius: theme.borderRadius.lg,
+      justifyContent: "center",
+      alignItems: "center"
+    },
+    flag: {
+      fontSize: moderateScale(56),
     },
     title: {
       fontSize: moderateScale(24),
@@ -139,10 +134,6 @@ export const LetterCard: React.FC<LetterCardProps> = ({
     },
     statusIcon: {
       marginRight: scale(6),
-    },
-    statusText: {
-      fontSize: moderateScale(12),
-      fontWeight: "500",
     },
     actions: {
       flexDirection: "row",
@@ -183,16 +174,18 @@ export const LetterCard: React.FC<LetterCardProps> = ({
         />
           <View style={styles.userInfo}>
             <Text style={styles.userName}>{displayUser.name}</Text>
-            <Text style={styles.userDetails}>
-              🎂 {displayUser.age} • {getCountryByCode(displayUser.country)?.flag}
-            </Text>
+              <AgeGenderChip
+              size="small"
+              gender={displayUser.gender}
+              age={displayUser.age}
+              style={{justifyContent: "flex-start", marginLeft: scale(10)}}
+              />
           </View>
-          <Ionicons
-            name="reader"
-            size={scale(76)}
-            color={theme.colors.text}
-            onPress={handleOptionsPress}
-          />
+          <View style={styles.flagContainer}>
+            <Text style={styles.flag}>
+              {getCountryByCode(displayUser.country)?.flag}
+              </Text>
+          </View>
         </View>
 
         <Text style={styles.title} numberOfLines={2}>
@@ -207,9 +200,6 @@ export const LetterCard: React.FC<LetterCardProps> = ({
               color={getStatusColor()}
               style={styles.statusIcon}
             />
-            <Text style={[styles.statusText, { color: getStatusColor() }]}>
-              {getTimeDisplay()}
-            </Text>
           </View>
           <TouchableOpacity
             style={styles.optionsButton}

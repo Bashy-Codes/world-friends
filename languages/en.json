@@ -42,7 +42,8 @@
       "male": "Male",
       "female": "Female",
       "other": "Other"
-    }
+    },
+    "emptyState": "No Items Found"
   },
     "greetings": {
       "goodMorning": "Good morning",
@@ -219,7 +220,7 @@
   },
   "letter": {
     "delivery": {
-      "sent": "Composed by you to be delivered to {{userName}} in {{countryName}} {{countryFlag}}",
+      "sent": "Composed by you {{timeAgo}} to be delivered to {{userName}} in {{countryName}} {{countryFlag}}",
       "received": "Composed by {{userName}} {{timeAgo}} from {{countryName}} {{countryFlag}}"
     }
   },

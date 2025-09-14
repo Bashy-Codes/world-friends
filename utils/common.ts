@@ -39,6 +39,7 @@ export const getDeliveryMessage = (
     // For sent letters: "Composed by you to be delivered to [user] in [country]"
     return t("letter.delivery.sent", {
       userName: otherUserName,
+      timeAgo,
       countryName,
       countryFlag
     });

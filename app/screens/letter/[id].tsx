@@ -125,9 +125,9 @@ export default function LetterDetailScreen() {
         <View style={styles.deliverySection}>
           <View style={styles.deliveryContainer}>
             <MaterialCommunityIcons
-              name="truck-fast"
+              name={letter.isDelivered ? "truck-check" : "truck-fast"}
               size={scale(76)}
-              color={theme.colors.primary}
+              color={letter.isDelivered ? theme.colors.success : theme.colors.primary}
               style={styles.deliveryIcon}
             />
             <Text style={styles.deliveryText}>

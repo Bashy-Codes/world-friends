@@ -89,7 +89,7 @@ export const ScheduleLetter: React.FC<ScheduleLetterProps> = ({
       <View style={styles.header}>
         <Ionicons
           name="time-outline"
-          size={scale(20)}
+          size={scale(26)}
           color={theme.colors.primary}
           style={styles.icon}
         />

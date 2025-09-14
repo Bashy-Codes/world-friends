@@ -97,7 +97,7 @@ export interface LetterCardProps {
       userId: string;
       name: string;
       profilePicture: string;
-      gender: string;
+      gender: "male" | "female" | "other";
       age: number;
       country: string;
     };
@@ -105,7 +105,7 @@ export interface LetterCardProps {
       userId: string;
       name: string;
       profilePicture: string;
-      gender: string;
+      gender: "male" | "female" | "other";
       age: number;
       country: string;
     };

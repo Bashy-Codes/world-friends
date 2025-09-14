@@ -10,7 +10,7 @@ const TAB_ICONS = {
   index: { active: 'home', inactive: 'home-outline' },
   discover: { active: 'earth', inactive: 'earth-outline' },
   friends: { active: 'people', inactive: 'people-outline' },
-  conversations: { active: 'chatbubbles', inactive: 'chatbubbles-outline' },
+  conversations: { active: 'chatbox-ellipses', inactive: 'chatbox-ellipses-outline' },
   profile: { active: 'person', inactive: 'person-outline' },
 } as const;
 

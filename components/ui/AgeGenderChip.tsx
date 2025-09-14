@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ViewStyle } from "react-native";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { useTheme } from "@/lib/Theme";
 
@@ -8,6 +8,7 @@ interface AgeGenderChipProps {
   showGenerText?: boolean,
   age: number;
   size?: "small" | "medium" | "large";
+  style?: ViewStyle;
 }
 
 const AgeGenderChip: React.FC<AgeGenderChipProps> = ({
@@ -15,6 +16,7 @@ const AgeGenderChip: React.FC<AgeGenderChipProps> = ({
   showGenerText = false,
   age,
   size = "medium",
+  style
 }) => {
   const theme = useTheme();
 
@@ -91,7 +93,7 @@ const AgeGenderChip: React.FC<AgeGenderChipProps> = ({
   const genderText = gender === "female" ? "Female" : gender === "male" ? "Male" : "Other";
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <View style={styles.genderChip}>
         <Text style={styles.icon}>{genderIcon}</Text>
         {showGenerText &&  <Text style={styles.text}>{genderText}</Text>}

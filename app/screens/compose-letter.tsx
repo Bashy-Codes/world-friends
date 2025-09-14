@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "@/lib/Theme";
 import { useTranslation } from "react-i18next";
 import { useComposeLetter } from "@/hooks/communications/useComposeLetter";
@@ -84,7 +84,6 @@ export default function ComposeLetterScreen() {
       color: theme.colors.text,
       textAlignVertical: "top",
     },
-
     friendSection: {
       backgroundColor: theme.colors.surface,
       borderRadius: scale(theme.borderRadius.lg),
@@ -187,12 +186,12 @@ export default function ComposeLetterScreen() {
         {/* Friend Selection */}
         <View style={styles.friendSection}>
           <View style={styles.sectionHeader}>
-            <Ionicons
-              name="person-outline"
-              size={scale(20)}
+            <MaterialCommunityIcons
+              name="truck-fast"
+              size={scale(26)}
               color={theme.colors.primary}
               style={styles.sectionIcon}
-            />
+              />
             <Text style={styles.sectionTitle}>{t("composeLetter.deliverTo")}</Text>
           </View>
 
