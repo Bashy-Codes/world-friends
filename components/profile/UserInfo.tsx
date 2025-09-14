@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { useTheme } from "@/lib/Theme";
 import { getCountryByCode } from "@/constants/geographics";
-import AgeGenderChip from "../AgeGenderChip";
+import AgeGenderChip from "../ui/AgeGenderChip";
 import ProfilePhoto from "../ui/ProfilePhoto";
 import NameContainer from "../ui/NameContainer";
 

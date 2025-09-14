@@ -10,7 +10,7 @@ import { Id } from "@/convex/_generated/dataModel";
 import { api } from "@/convex/_generated/api";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/Button";
-import AgeGenderChip from "../AgeGenderChip";
+import AgeGenderChip from "../ui/AgeGenderChip";
 import NameContainer from "../ui/NameContainer";
 import ProfilePhoto from "../ui/ProfilePhoto";
 

@@ -7,7 +7,7 @@ import { useTheme } from "@/lib/Theme";
 import { getCountryByCode } from "@/constants/geographics";
 import type { Request } from "@/types/friendships";
 import { Id } from "@/convex/_generated/dataModel";
-import AgeGenderChip from "../AgeGenderChip";
+import AgeGenderChip from "../ui/AgeGenderChip";
 import { Button } from "../ui/Button";
 import ProfilePhoto from "../ui/ProfilePhoto";
 

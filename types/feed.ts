@@ -36,7 +36,7 @@ export interface CommentTypes {
   commentAuthor: {
   userId: Id<"users">;
   name: string;
-  profilePicture: string | null;
+  profilePicture: string;
   isAdmin?: boolean;
   isSupporter?: boolean;
   };
@@ -51,7 +51,7 @@ export interface ReactionTypes {
   reactionAuthor: {
     userId: Id<"users">;
     name: string;
-    profilePicture: string | null;
+    profilePicture: string;
     isAdmin?: boolean;
     isSupporter?: boolean;
   };

@@ -8,7 +8,6 @@ import { useTheme } from "@/lib/Theme";
 import { formatTimeAgo } from "@/utils/formatTime";
 import { Id } from "@/convex/_generated/dataModel";
 import { CommentTypes } from "@/types/feed";
-import { ProfilePicture } from "@/components/common/ProfilePicture";
 
 export interface CommentItemProps {
   comment: CommentTypes;
@@ -181,11 +180,14 @@ export const CommentItem: React.FC<CommentItemProps> = memo(({
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <ProfilePicture
-          profilePicture={comment.commentAuthor.profilePicture || undefined}
+        <Image
+          source={{ uri: comment.commentAuthor.profilePicture }}
           style={styles.profileImage}
-          lazy={true}
-          priority="low"
+          contentFit="cover"
+          priority="normal"
+          cachePolicy={"memory"}
+          placeholder={"@/assets/images/user.png"}
+          placeholderContentFit="scale-down"
         />
         <View style={styles.userInfo}>
           <View style={styles.userNameContainer}>

@@ -9,7 +9,7 @@ import type { UserCardData } from "@/types/discover";
 import { ProfilePicture } from "@/components/common/ProfilePicture";
 import { useTranslation } from "react-i18next";
 import { Id } from "@/convex/_generated/dataModel";
-import AgeGenderChip from "../AgeGenderChip";
+import AgeGenderChip from "../ui/AgeGenderChip";
 
 interface UserCardProps {
   user: UserCardData;

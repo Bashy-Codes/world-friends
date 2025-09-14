@@ -13,6 +13,7 @@ import { getCountryByCode } from "@/constants/geographics";
 import { ProfilePicture } from "@/components/common/ProfilePicture";
 import { ActionSheet, ActionSheetRef } from "@/components/common/ActionSheet";
 import { useTranslation } from "react-i18next";
+import { Image } from "expo-image";
 
 
 export const LetterCard: React.FC<LetterCardProps> = ({
@@ -96,6 +97,13 @@ export const LetterCard: React.FC<LetterCardProps> = ({
       alignItems: "center",
       marginBottom: verticalScale(12),
     },
+    profileImage: {
+      width: scale(60),
+      height: scale(60),
+      borderRadius: scale(30),
+      borderWidth: scale(2),
+      borderColor: theme.colors.primary
+    },
     userInfo: {
       flex: 1,
       marginLeft: scale(12),
@@ -164,10 +172,15 @@ export const LetterCard: React.FC<LetterCardProps> = ({
         activeOpacity={0.7}
       >
         <View style={styles.header}>
-          <ProfilePicture
-            profilePicture={displayUser.profilePicture}
-            size={48}
-          />
+        <Image
+          source={{ uri: displayUser.profilePicture }}
+          style={styles.profileImage}
+          contentFit="cover"
+          priority="normal"
+          cachePolicy={"memory"}
+          placeholder={"@/assets/images/user.png"}
+          placeholderContentFit="scale-down"
+        />
           <View style={styles.userInfo}>
             <Text style={styles.userName}>{displayUser.name}</Text>
             <Text style={styles.userDetails}>

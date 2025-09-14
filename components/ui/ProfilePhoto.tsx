@@ -6,7 +6,7 @@ import { useTheme } from "@/lib/Theme";
 
 interface ProfilePhotoProps {
   profilePicture: string;
-  size?: "verySmall" | "small" | "medium" | "large";
+  size?: "tiny" | "small" | "medium" | "large";
 style?: ViewStyle;
 }   
 
@@ -18,7 +18,7 @@ const ProfilePhoto: React.FC<ProfilePhotoProps> = ({
   const theme = useTheme();
 
   const sizeStyles = {
-    verySmall: {
+    tiny: {
       width: scale(40),
       height: scale(40),
       borderRadius: scale(20),
