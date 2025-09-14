@@ -25,6 +25,7 @@ const AgeGenderChip: React.FC<AgeGenderChipProps> = ({
       iconSize: moderateScale(12),
       fontSize: moderateScale(12),
       gap: scale(6),
+      marginBottom: verticalScale(8),
     },
     medium: {
       paddingHorizontal: scale(12),
@@ -32,6 +33,7 @@ const AgeGenderChip: React.FC<AgeGenderChipProps> = ({
       iconSize: moderateScale(16),
       fontSize: moderateScale(14),
       gap: scale(8),
+      marginBottom: verticalScale(10),
     },
     large: {
       paddingHorizontal: scale(16),
@@ -39,6 +41,7 @@ const AgeGenderChip: React.FC<AgeGenderChipProps> = ({
       iconSize: moderateScale(20),
       fontSize: moderateScale(16),
       gap: scale(10),
+      marginBottom: verticalScale(12),
     },
   };
 
@@ -48,6 +51,7 @@ const AgeGenderChip: React.FC<AgeGenderChipProps> = ({
       alignItems: "center",
       justifyContent: "center",
       gap: sizeStyles[size].gap,
+      marginBottom: sizeStyles[size].marginBottom,
     },
     genderChip: {
       flexDirection: "row",

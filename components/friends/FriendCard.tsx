@@ -1,6 +1,5 @@
 import { memo, useCallback, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { router } from "expo-router";
 import { useMutation } from "convex/react";
@@ -9,10 +8,11 @@ import { getCountryByCode } from "@/constants/geographics";
 import type { Friend } from "@/types/friendships";
 import { Id } from "@/convex/_generated/dataModel";
 import { api } from "@/convex/_generated/api";
-import { ProfilePicture } from "@/components/common/ProfilePicture";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/Button";
 import AgeGenderChip from "../AgeGenderChip";
+import NameContainer from "../ui/NameContainer";
+import ProfilePhoto from "../ui/ProfilePhoto";
 
 interface FriendCardProps {
   friend: Friend;
@@ -84,51 +84,6 @@ const FriendCardComponent: React.FC<FriendCardProps> = ({
       shadowRadius: 3.84,
       elevation: 5,
     },
-    profileImageContainer: {
-      width: scale(100),
-      height: scale(100),
-      borderRadius: scale(theme.borderRadius.full),
-      borderWidth: scale(3),
-      borderColor: theme.colors.primary,
-      justifyContent: "center",
-      alignItems: "center",
-      marginBottom: verticalScale(16),
-      overflow: "hidden",
-    },
-    profileImage: {
-      width: "100%",
-      height: "100%",
-    },
-    profileImageError: {
-      backgroundColor: theme.colors.border,
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    nameContainer: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-      marginBottom: verticalScale(12),
-    },
-    name: {
-      fontSize: moderateScale(24),
-      fontWeight: "700",
-      color: theme.colors.text,
-      textAlign: "center",
-    },
-    verifiedIcon: {
-      marginLeft: scale(6),
-    },
-    supporterIcon: {
-      marginLeft: scale(4),
-    },
-    infoRow: {
-      flexDirection: "row",
-      justifyContent: "center",
-      alignItems: "center",
-      marginBottom: verticalScale(12),
-      width: "100%",
-    },
     countryContainer: {
       flexDirection: "row",
       alignItems: "center",
@@ -153,45 +108,23 @@ const FriendCardComponent: React.FC<FriendCardProps> = ({
 
   return (
     <TouchableOpacity onPress={handleViewProfile} activeOpacity={0.8} style={styles.card}>
-      <ProfilePicture
-        profilePicture={friend.profilePicture}
-        size={120}
-        style={styles.profileImageContainer}
-        lazy={true}
-        priority="low"
-      />
-
-      <View style={styles.nameContainer}>
-        <Text style={styles.name}>{friend.name}</Text>
-        {friend.isAdmin && (
-          <Ionicons
-            name="shield-checkmark"
-            size={scale(18)}
-            color={theme.colors.primary}
-            style={styles.verifiedIcon}
-          />
-        )}
-        {friend.isSupporter && (
-          <Ionicons
-            name="heart"
-            size={scale(18)}
-            color={theme.colors.secondary}
-            style={styles.supporterIcon}
-          />
-        )}
-      </View>
-
-      <View style={styles.infoRow}>
+      <ProfilePhoto
+       profilePicture={friend.profilePicture}
+       />
+        <NameContainer
+        name={friend.name}
+        isAdmin={friend.isAdmin}
+        isSupporter={friend.isSupporter}
+        />
        <AgeGenderChip
           size="medium"
           gender={friend.gender}
           age={friend.age}
         />
-      </View>
 
       <View style={styles.countryContainer}>
         <Text style={styles.flagEmoji}>{country?.flag}</Text>
-        <Text style={styles.countryText}>{country?.name || "Unknown"}</Text>
+        <Text style={styles.countryText}>{country?.name}</Text>
       </View>
 
       <View style={styles.buttonsContainer}>

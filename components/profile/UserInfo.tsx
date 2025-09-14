@@ -1,11 +1,11 @@
 import React, { memo } from "react";
-import { View, Text, StyleSheet, Platform } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { View, Text, StyleSheet } from "react-native";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { useTheme } from "@/lib/Theme";
 import { getCountryByCode } from "@/constants/geographics";
-import { ProfilePicture } from "@/components/common/ProfilePicture";
 import AgeGenderChip from "../AgeGenderChip";
+import ProfilePhoto from "../ui/ProfilePhoto";
+import NameContainer from "../ui/NameContainer";
 
 interface UserInfoProps {
   profilePicture: string;
@@ -39,31 +39,6 @@ export const UserInfo = memo<UserInfoProps>(
         paddingVertical: verticalScale(20),
         paddingHorizontal: scale(20),
       },
-      profileImageContainer: {
-        width: scale(120),
-        height: scale(120),
-        borderRadius: scale(60),
-        marginBottom: verticalScale(16),
-        position: "relative"
-      },
-      nameContainer: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        marginBottom: verticalScale(4),
-      },
-      name: {
-        fontSize: moderateScale(30),
-        fontWeight: "700",
-        color: theme.colors.text,
-        textAlign: "center",
-      },
-      verifiedIcon: {
-        marginLeft: scale(8),
-      },
-      supporterIcon: {
-        marginLeft: scale(6),
-      },
       username: {
         fontSize: moderateScale(18),
         fontWeight: "500",
@@ -71,23 +46,14 @@ export const UserInfo = memo<UserInfoProps>(
         textAlign: "center",
         marginBottom: verticalScale(12),
       },
-      infoRow: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        marginBottom: verticalScale(12),
-        gap: scale(12),
-      },
       detailRow: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: theme.colors.surface,
+        backgroundColor: `${theme.colors.info}15`,
         paddingHorizontal: scale(16),
         paddingVertical: verticalScale(10),
         borderRadius: scale(theme.borderRadius.full),
-        borderWidth: 1,
-        borderColor: theme.colors.border,
         gap: scale(8),
       },
       countryFlag: {
@@ -102,41 +68,23 @@ export const UserInfo = memo<UserInfoProps>(
 
     return (
       <View style={styles.container}>
-        <ProfilePicture
+        <ProfilePhoto
           profilePicture={profilePicture}
-          size={120}
-          style={styles.profileImageContainer}
+          size="large"
         />
-
-        <View style={styles.nameContainer}>
-          <Text style={styles.name}>{name}</Text>
-          {isAdmin && (
-            <Ionicons
-              name="shield-checkmark"
-              size={scale(24)}
-              color={theme.colors.primary}
-              style={styles.verifiedIcon}
-            />
-          )}
-          {isSupporter && (
-            <Ionicons
-              name="heart"
-              size={scale(24)}
-              color={theme.colors.secondary}
-              style={styles.supporterIcon}
-            />
-          )}
-        </View>
+        <NameContainer
+          size="large"
+          name={name}
+          isAdmin={isAdmin}
+          isSupporter={isSupporter}
+          />
         <Text style={styles.username}>@{username}</Text>
-
-        <View style={styles.infoRow}>
          <AgeGenderChip
           size="large"
           gender={gender}
           showGenerText
           age={age}
           />
-        </View>
           <View style={styles.detailRow}>
             <Text style={styles.countryFlag}>{country?.flag}</Text>
             <Text style={styles.countryText}>{country?.name}</Text>

@@ -17,7 +17,7 @@ export interface PostTypes {
   postAuthor: {
     userId: Id<"users">;
     name: string;
-    profilePicture: string | null;
+    profilePicture: string;
     isAdmin?: boolean;
     isSupporter?: boolean;
   };

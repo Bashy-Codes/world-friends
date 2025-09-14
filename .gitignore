@@ -9,3 +9,4 @@ node_modules/
 .expo/
 .vscode/
 .augment/
+package-lock.json

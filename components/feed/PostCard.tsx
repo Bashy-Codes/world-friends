@@ -1,11 +1,5 @@
 import React, { memo, useCallback, useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Dimensions,
-} from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet,  Dimensions} from "react-native";
 import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
@@ -14,15 +8,11 @@ import { useTheme } from "@/lib/Theme";
 import { formatTimeAgo } from "@/utils/formatTime";
 import { PostCardProps } from "@/types/feed";
 import { Id } from "@/convex/_generated/dataModel";
-import { ProfilePicture } from "@/components/common/ProfilePicture";
-
 import { Separator } from "@/components/common/Separator";
 import { AddReactionModal } from "./AddReactionModal";
 import { PostMeta } from "./PostMeta";
 
-
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
-
 
 const PostCardComponent: React.FC<PostCardProps> = ({
   post,
@@ -106,15 +96,12 @@ const PostCardComponent: React.FC<PostCardProps> = ({
       flex: 1,
     },
     profilePicture: {
-      width: scale(40),
-      height: scale(40),
+      width: scale(45),
+      height: scale(45),
       borderRadius: scale(theme.borderRadius.full),
       marginRight: scale(12),
-    },
-    profilePictureError: {
-      backgroundColor: theme.colors.border,
-      justifyContent: "center",
-      alignItems: "center",
+      borderWidth: scale(2),
+      borderColor: theme.colors.primary
     },
     userInfo: {
       flex: 1,
@@ -200,12 +187,15 @@ const PostCardComponent: React.FC<PostCardProps> = ({
           onPress={handleUserPress}
           activeOpacity={0.7}
         >
-          <ProfilePicture
-            profilePicture={post.postAuthor.profilePicture || undefined}
+          <Image
+            source={{ uri: post.postAuthor.profilePicture }}
             style={styles.profilePicture}
-            lazy={true}
+            contentFit="cover"
             priority="normal"
-          />
+            cachePolicy={"memory"}
+            placeholder={"@/assets/images/user.png"}
+            placeholderContentFit="scale-down"
+                 />
           <View style={styles.userInfo}>
             <View style={styles.userNameContainer}>
               <Text style={styles.userName}>{post.postAuthor.name}</Text>

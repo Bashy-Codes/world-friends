@@ -7,9 +7,9 @@ import { useTheme } from "@/lib/Theme";
 import { getCountryByCode } from "@/constants/geographics";
 import type { Request } from "@/types/friendships";
 import { Id } from "@/convex/_generated/dataModel";
-import { Image } from "expo-image";
 import AgeGenderChip from "../AgeGenderChip";
 import { Button } from "../ui/Button";
+import ProfilePhoto from "../ui/ProfilePhoto";
 
 interface RequestCardProps {
   request: Request;
@@ -24,13 +24,8 @@ const RequestCardComponent: React.FC<RequestCardProps> = ({
 }) => {
   const theme = useTheme();
   const [showMessageModal, setShowMessageModal] = useState(false);
-  const [imageLoadError, setImageLoadError] = useState(false);
 
   const country = getCountryByCode(request.country);
-
-  const handleImageError = useCallback(() => {
-    setImageLoadError(true);
-  }, []);
 
   const handleReadMessage = useCallback(() => {
     setShowMessageModal(true);
@@ -71,17 +66,6 @@ const RequestCardComponent: React.FC<RequestCardProps> = ({
       alignItems: "center",
       marginBottom: verticalScale(12),
     },
-    profileImageContainer: {
-      width: scale(50),
-      height: scale(50),
-      borderRadius: scale(25),
-      marginRight: scale(12),
-      overflow: "hidden",
-    },
-    profileImage: {
-      width: "100%",
-      height: "100%",
-    },
     userInfo: {
       flex: 1,
     },
@@ -90,11 +74,6 @@ const RequestCardComponent: React.FC<RequestCardProps> = ({
       fontWeight: "700",
       color: theme.colors.text,
       marginBottom: verticalScale(2),
-    },
-    infoRow: {
-      flexDirection: "row",
-      alignItems: "center",
-      gap: scale(8),
     },
     countryContainer: {
       flexDirection: "row",
@@ -163,27 +142,16 @@ const RequestCardComponent: React.FC<RequestCardProps> = ({
       <View style={styles.card}>
         {/* Header with profile info */}
         <View style={styles.header}>
-          <View style={styles.profileImageContainer}>
-            <Image
-              source={{ uri: request.profilePicture }}
-              style={styles.profileImage}
-              contentFit="cover"
-              transition={150}
-              cachePolicy="memory-disk"
-              priority="normal"
-              placeholder={require("@/assets/images/user.png")}
-              />
-          </View>
-
-          <View style={styles.userInfo}>
+            <ProfilePhoto
+              profilePicture={request.profilePicture}
+            />
+          <View style={{ flex:1 }}>
             <Text style={styles.name}>{request.name}</Text>
-            <View style={styles.infoRow}>
             <AgeGenderChip
               size="small"
               gender={request.gender}
               age={request.age}
               />
-            </View>
           </View>
         </View>
 
