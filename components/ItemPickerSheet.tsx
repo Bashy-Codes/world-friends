@@ -2,7 +2,6 @@ import React, { forwardRef, useMemo, useState, useCallback, useImperativeHandle 
 import { View, Text, TouchableOpacity, StyleSheet, Modal, FlatList, Dimensions, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
-
 import { useTheme } from "@/lib/Theme";
 import { ItemSearchModal, SearchItem } from "@/components/profile-management/ItemSearchModal";
 import { Button } from "./ui/Button";

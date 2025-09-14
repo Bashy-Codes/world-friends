@@ -4,7 +4,7 @@ import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@/lib/Theme";
 import { Separator } from "@/components/common/Separator";
-import { Button } from "../ui/Button";
+import { Button } from "@/components/ui/Button";
 
 interface GreetingsProps {
   onCreatePost?: () => void;

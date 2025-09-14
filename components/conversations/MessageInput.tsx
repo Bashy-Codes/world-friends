@@ -39,6 +39,7 @@ interface MessageInputProps {
  * - Loading states
  * - Proper keyboard handling
  */
+
 export const MessageInput: React.FC<MessageInputProps> = ({
   onSendMessage,
   onSendImage,

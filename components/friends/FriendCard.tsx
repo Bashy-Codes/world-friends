@@ -1,6 +1,6 @@
 import { memo, useCallback, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { Ionicons, FontAwesome6 } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { router } from "expo-router";
 import { useMutation } from "convex/react";
@@ -11,7 +11,8 @@ import { Id } from "@/convex/_generated/dataModel";
 import { api } from "@/convex/_generated/api";
 import { ProfilePicture } from "@/components/common/ProfilePicture";
 import { useTranslation } from "react-i18next";
-import { Button } from "../ui/Button";
+import { Button } from "@/components/ui/Button";
+import AgeGenderChip from "../AgeGenderChip";
 
 interface FriendCardProps {
   friend: Friend;
@@ -128,35 +129,6 @@ const FriendCardComponent: React.FC<FriendCardProps> = ({
       marginBottom: verticalScale(12),
       width: "100%",
     },
-    genderButton: {
-      flexDirection: "row",
-      alignItems: "center",
-      backgroundColor: theme.colors.error, // Red for female
-      paddingHorizontal: scale(16),
-      paddingVertical: verticalScale(8),
-      borderRadius: scale(theme.borderRadius.full),
-      marginRight: scale(8),
-    },
-    genderButtonMale: {
-      backgroundColor: theme.colors.info, // Blue for male
-    },
-    genderButtonOther: {
-      backgroundColor: theme.colors.warning, // Orange for other
-    },
-    ageButton: {
-      flexDirection: "row",
-      alignItems: "center",
-      backgroundColor: theme.colors.info,
-      paddingHorizontal: scale(16),
-      paddingVertical: verticalScale(8),
-      borderRadius: scale(theme.borderRadius.full),
-    },
-    ageText: {
-      fontSize: moderateScale(14),
-      color: theme.colors.white,
-      fontWeight: "600",
-      marginLeft: scale(4),
-    },
     countryContainer: {
       flexDirection: "row",
       alignItems: "center",
@@ -176,41 +148,6 @@ const FriendCardComponent: React.FC<FriendCardProps> = ({
       flexDirection: "row",
       width: "100%",
       gap: scale(12),
-    },
-    messageButton: {
-      flex: 1,
-    },
-    removeButton: {
-      flex: 1,
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: theme.colors.error,
-      paddingVertical: verticalScale(12),
-      borderRadius: scale(theme.borderRadius.lg),
-    },
-    viewProfileButton: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: theme.colors.surface,
-      borderWidth: 1,
-      borderColor: theme.colors.border,
-      paddingVertical: verticalScale(12),
-      borderRadius: scale(theme.borderRadius.lg),
-      width: "100%",
-      marginTop: verticalScale(8),
-    },
-    buttonText: {
-      fontSize: moderateScale(14),
-      fontWeight: "600",
-      marginLeft: scale(6),
-    },
-    messageButtonText: {
-      color: theme.colors.white,
-    },
-    viewProfileButtonText: {
-      color: theme.colors.text,
     },
   });
 
@@ -245,25 +182,11 @@ const FriendCardComponent: React.FC<FriendCardProps> = ({
       </View>
 
       <View style={styles.infoRow}>
-        <View
-          style={[
-            styles.genderButton,
-            friend.gender === "male" && styles.genderButtonMale,
-            friend.gender === "other" && styles.genderButtonOther,
-          ]}
-        >
-          <Text style={{ fontSize: moderateScale(16) }}>
-            {friend.gender === "female"
-              ? "👩"
-              : friend.gender === "male"
-                ? "👨"
-                : "👤"}
-          </Text>
-        </View>
-        <View style={styles.ageButton}>
-          <Text style={styles.ageText}>🎂</Text>
-          <Text style={styles.ageText}>{friend.age}</Text>
-        </View>
+       <AgeGenderChip
+          size="medium"
+          gender={friend.gender}
+          age={friend.age}
+        />
       </View>
 
       <View style={styles.countryContainer}>
@@ -275,7 +198,7 @@ const FriendCardComponent: React.FC<FriendCardProps> = ({
         <Button
           iconName="chatbubble-ellipses"
           onPress={handleMessage}
-          style={styles.messageButton}
+          style={{flex: 1}}
         />
       </View>
     </TouchableOpacity>

@@ -13,7 +13,7 @@ import { FlashList } from "@shopify/flash-list";
 // UI components
 import { ScreenHeader } from "@/components/ScreenHeader";
 import { ScreenLoading } from "@/components/ScreenLoading";
-import { ReliableKeyboardAvoidingView } from "@/components/common/CustomKeyboardAvoidingView";
+import { ReliableKeyboardAvoidingView } from "@/components/common/KeyboardHandler";
 import { ReactionsModal } from "@/components/feed/ReactionsModal";
 import { ActionSheet } from "@/components/common/ActionSheet";
 import { CollectionsModal } from "@/components/feed/CollectionsModal";

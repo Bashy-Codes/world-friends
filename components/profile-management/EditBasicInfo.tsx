@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "@/lib/Theme";
 import { EditProfileData } from "@/validations/profile";
 import { api } from "@/convex/_generated/api";
-import { InfoSection } from "../feed/InfoSection";
+import { InfoSection } from "../common/InfoSection";
 
 interface EditBasicInfoProps {
   control: Control<EditProfileData>;

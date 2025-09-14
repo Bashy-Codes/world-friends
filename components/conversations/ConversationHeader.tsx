@@ -19,17 +19,6 @@ interface ConversationHeaderProps {
   onOptionsPress: () => void;
 }
 
-/**
- * ConversationHeader component for the conversation screen
- *
- * Features:
- * - Back chevron button
- * - Profile photo of the other user
- * - User name
- * - Ellipsis icon for chat options (delete conversation)
- * - Proper safe area handling
- * - Beautiful responsive design
- */
 export const ConversationHeader: React.FC<ConversationHeaderProps> = ({
   otherUser,
   onBackPress,

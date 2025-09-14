@@ -2,7 +2,7 @@ import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useMutation } from "convex/react";
 import * as ImageManipulator from "expo-image-manipulator";
-import { useUploadFile } from "@convex-dev/r2/react";
+
 
 export type UploadResult = {
   storageId?: string; // For Convex storage
@@ -66,34 +66,6 @@ export async function uploadImageToConvex(
     return { storageId };
   } catch (error) {
     console.error("Upload failed:", error);
-    return null;
-  }
-}
-
-// Upload image to R2 storage (for profile photos and post images) - DEPRECATED
-// Use uploadProfileImageToR2 or uploadPostImageToR2 instead for custom keys
-export async function uploadImageToR2(
-  imageUri: string,
-  uploadFile: ReturnType<typeof useUploadFile>
-): Promise<UploadResult> {
-  try {
-    // Compress the image first
-    const compressedImage = await compressImage(imageUri);
-    if (!compressedImage) {
-      throw new Error("Failed to compress image");
-    }
-
-    // Convert to File object for R2 upload
-    const response = await fetch(compressedImage.uri);
-    const blob = await response.blob();
-    const file = new File([blob], "image.jpg", { type: "image/jpeg" });
-
-    // Upload to R2 using the useUploadFile hook
-    const key = await uploadFile(file);
-
-    return { key };
-  } catch (error) {
-    console.error("R2 Upload failed:", error);
     return null;
   }
 }

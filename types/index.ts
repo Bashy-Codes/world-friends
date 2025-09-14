@@ -69,7 +69,7 @@ export interface LetterData {
   daysUntilDelivery?: number;
 }
 
-// Simplified letter data for detail view
+// Letter data for detail view
 export interface LetterDetailData {
   letterId: Id<"letters">;
   title: string;

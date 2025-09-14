@@ -12,6 +12,7 @@ import { formatTimeAgo } from "@/utils/formatTime";
 import { ProfilePicture } from "@/components/common/ProfilePicture";
 import { FlashList } from "@shopify/flash-list";
 import { EmptyState } from "@/components/EmptyState";
+import { Button } from "../ui/Button";
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
@@ -189,14 +190,6 @@ export const ReactionsModal: React.FC<ReactionsModalProps> = ({ visible, postId,
       backgroundColor: theme.colors.background,
       borderRadius: scale(theme.borderRadius.xl),
     },
-    closeButton: {
-      width: '100%',
-      height: scale(50),
-      borderRadius: scale(25),
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: theme.colors.error,
-    },
     content: {
       flex: 1,
       paddingTop: verticalScale(8),
@@ -240,17 +233,10 @@ export const ReactionsModal: React.FC<ReactionsModalProps> = ({ visible, postId,
           <View
             style={styles.actionsContainer}
           >
-            <TouchableOpacity
-              style={styles.closeButton}
-              onPress={onClose}
-              activeOpacity={0.7}
-            >
-              <Ionicons
-                name="close"
-                size={scale(24)}
-                color={theme.colors.text}
-              />
-            </TouchableOpacity>
+          <Button
+            iconName="close"
+            onPress={onClose}
+            />
           </View>
         </View>
       </View>

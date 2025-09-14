@@ -9,7 +9,7 @@ import type { UserCardData } from "@/types/discover";
 import { ProfilePicture } from "@/components/common/ProfilePicture";
 import { useTranslation } from "react-i18next";
 import { Id } from "@/convex/_generated/dataModel";
-import { Button } from "../ui/Button";
+import AgeGenderChip from "../AgeGenderChip";
 
 interface UserCardProps {
   user: UserCardData;
@@ -91,41 +91,7 @@ const UserCardComponent: React.FC<UserCardProps> = ({
       justifyContent: "center",
       alignItems: "center",
       marginBottom: verticalScale(12),
-      width: "100%",
     },
-    genderButton: {
-      flexDirection: "row",
-      alignItems: "center",
-      backgroundColor: theme.colors.error, // Red for female
-      paddingHorizontal: scale(16),
-      paddingVertical: verticalScale(8),
-      borderRadius: scale(theme.borderRadius.full),
-      marginRight: scale(8),
-    },
-    genderButtonMale: {
-      backgroundColor: theme.colors.info, // Blue for male
-    },
-    genderText: {
-      fontSize: moderateScale(14),
-      color: theme.colors.white,
-      fontWeight: "600",
-      marginLeft: scale(4),
-    },
-    ageButton: {
-      flexDirection: "row",
-      alignItems: "center",
-      backgroundColor: theme.colors.info,
-      paddingHorizontal: scale(16),
-      paddingVertical: verticalScale(8),
-      borderRadius: scale(theme.borderRadius.full),
-    },
-    ageText: {
-      fontSize: moderateScale(14),
-      color: theme.colors.white,
-      fontWeight: "600",
-      marginLeft: scale(4),
-    },
-
     detailRow: {
       flexDirection: "row",
       alignItems: "center",
@@ -188,24 +154,11 @@ const UserCardComponent: React.FC<UserCardProps> = ({
       </View>
 
       <View style={styles.infoRow}>
-        <View
-          style={[
-            styles.genderButton,
-            user.gender === "male" && styles.genderButtonMale,
-          ]}
-        >
-          <Text style={{ fontSize: moderateScale(16) }}>
-            {user.gender === "female"
-              ? "👩"
-              : user.gender === "male"
-                ? "👨"
-                : "👤"}
-          </Text>
-        </View>
-        <View style={styles.ageButton}>
-          <Text style={styles.ageText}>🎂</Text>
-          <Text style={styles.ageText}>{user.age}</Text>
-        </View>
+        <AgeGenderChip
+        size="large"
+        gender={user.gender}
+        age={user.age}
+        />
       </View>
 
       <View style={styles.detailRow}>

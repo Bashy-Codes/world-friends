@@ -200,8 +200,6 @@ export const useComposeLetter = () => {
     // Constants
     MIN_CONTENT_LENGTH,
     MAX_CONTENT_LENGTH,
-    MIN_SCHEDULE_DAYS,
-    MAX_SCHEDULE_DAYS,
 
     // Handlers
     handleTitleChange,

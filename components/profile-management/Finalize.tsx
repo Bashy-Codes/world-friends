@@ -7,7 +7,7 @@ import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@/lib/Theme";
 import { ImagePickerSheet, ImagePickerSheetRef } from "@/components/common/ImagePickerSheet";
-import { InfoSection } from "@/components/feed/InfoSection";
+import { InfoSection } from "@/components/common/InfoSection";
 import { calculateAge } from "@/utils/common";
 import { Separator } from "@/components/common/Separator";
 

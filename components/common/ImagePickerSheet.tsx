@@ -1,6 +1,5 @@
 import React, { forwardRef, useState, useCallback, useImperativeHandle } from "react";
-import { View, TouchableOpacity, StyleSheet, Modal, Dimensions, Pressable } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { View, StyleSheet, Modal, Pressable } from "react-native";
 import { scale, verticalScale } from "react-native-size-matters";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";

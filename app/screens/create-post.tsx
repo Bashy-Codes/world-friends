@@ -13,7 +13,7 @@ import { ScreenHeader } from "@/components/ScreenHeader";
 import { AddImageSection } from "@/components/feed/AddImageSection";
 import { SelectCollection } from "@/components/feed/SelectCollection";
 import { AddTags } from "@/components/feed/AddTags";
-import { InfoSection } from "@/components/feed/InfoSection";
+import { InfoSection } from "@/components/common/InfoSection";
 import { ImagePickerSheet } from "@/components/common/ImagePickerSheet";
 import { ItemPickerSheet } from "@/components/ItemPickerSheet";
 import { ConfirmationModal } from "@/components/common/ConfirmationModal";

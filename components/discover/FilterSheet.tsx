@@ -11,6 +11,7 @@ import {
   getLanguageByCode,
 } from "@/constants/geographics";
 import { ItemPickerSheet, ItemPickerSheetRef, PickerItem } from "@/components/ItemPickerSheet";
+import { Button } from "../ui/Button";
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
@@ -256,27 +257,10 @@ export const FilterModal = forwardRef<FilterModalRef, FilterModalProps>(
     actionsContainer: {
       backgroundColor: theme.colors.background,
       flexDirection: 'row',
-      justifyContent: 'space-between',
       paddingHorizontal: scale(24),
       paddingVertical: verticalScale(16),
       borderRadius: scale(theme.borderRadius.xl),
       gap: scale(12),
-    },
-    actionButton: {
-      width: scale(100),
-      height: scale(50),
-      borderRadius: scale(25),
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    cancelButton: {
-      backgroundColor: theme.colors.error,
-    },
-    confirmButton: {
-      backgroundColor: theme.colors.primary,
-    },
-    confirmButtonDisabled: {
-      backgroundColor: theme.colors.surfaceSecondary,
     },
   });
 
@@ -322,33 +306,18 @@ export const FilterModal = forwardRef<FilterModalRef, FilterModalProps>(
 
             {/* Bottom Actions */}
             <View style={styles.actionsContainer}>
-              <TouchableOpacity
-                style={[styles.actionButton, styles.cancelButton]}
-                onPress={handleClose}
-                activeOpacity={0.7}
-              >
-                <Ionicons
-                  name="close"
-                  size={scale(20)}
-                  color={theme.colors.white}
-                />
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={[
-                  styles.actionButton,
-                  hasSelection ? styles.confirmButton : styles.confirmButtonDisabled,
-                ]}
-                onPress={handleConfirm}
-                activeOpacity={0.7}
-                disabled={!hasSelection}
-              >
-                <Ionicons
-                  name="checkmark"
-                  size={scale(20)}
-                  color={hasSelection ? theme.colors.white : theme.colors.textMuted}
-                />
-              </TouchableOpacity>
+             <Button
+             iconName="close"
+             bgColor={theme.colors.error}
+             onPress={handleClose}
+             style={{flex: 1}}
+            />
+            <Button
+             iconName="checkmark-sharp"
+             onPress={handleConfirm}
+             disabled={!hasSelection}
+             style={{flex: 1}}
+            />
             </View>
           </Pressable>
         </Pressable>

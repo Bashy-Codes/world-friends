@@ -22,7 +22,7 @@ import { api } from "@/convex/_generated/api";
 import { uploadImageToConvex } from "@/utils/uploadImages";
 import { Id } from "@/convex/_generated/dataModel";
 import Toast from "react-native-toast-message";
-import { InfoSection } from "@/components/feed/InfoSection";
+import { InfoSection } from "@/components/common/InfoSection";
 import { Button } from "@/components/ui/Button";
 
 type ReportType =

@@ -1,10 +1,9 @@
 import { useTheme } from "@/lib/Theme"
-import { Ionicons } from "@expo/vector-icons"
 import { forwardRef, useImperativeHandle, useState, useCallback } from "react"
-import { StyleSheet, Text, TouchableOpacity, Modal, View, Dimensions, Pressable } from "react-native"
+import { StyleSheet, Modal, View, Dimensions, Pressable } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import { scale, verticalScale, moderateScale } from "react-native-size-matters"
-import { Button } from "../ui/Button"
+import { scale, verticalScale } from "react-native-size-matters"
+import { Button } from "@/components/ui/Button"
 
 const { height: screenHeight } = Dimensions.get('window');
 

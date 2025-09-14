@@ -13,7 +13,7 @@ import { ScreenHeader } from "@/components/ScreenHeader";
 import { LoadingModal } from "@/components/common/LoadingModal";
 import { useEditProfile } from "@/hooks/useEditProfile";
 import { useTranslation } from "react-i18next";
-import { ReliableKeyboardAvoidingView } from "@/components/common/CustomKeyboardAvoidingView";
+import { ReliableKeyboardAvoidingView } from "@/components/common/KeyboardHandler";
 import { Button } from "@/components/ui/Button";
 
 export default function EditProfileScreen() {

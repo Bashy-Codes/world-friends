@@ -10,7 +10,7 @@ import { useMessages } from "@/hooks/conversations/useMessages";
 import { MessageData } from "@/types/conversations";
 
 // components
-import { ReliableKeyboardAvoidingView } from "@/components/common/CustomKeyboardAvoidingView";
+import { ReliableKeyboardAvoidingView } from "@/components/common/KeyboardHandler";
 import { ConfirmationModal } from "@/components/common/ConfirmationModal";
 import { EmptyState } from "@/components/EmptyState";
 import { ConversationHeader } from "@/components/conversations/ConversationHeader";

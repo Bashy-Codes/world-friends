@@ -11,11 +11,9 @@ import { ThemeProvider as NavigationThemeProvider } from "@react-navigation/nati
 import { ThemeProvider, useTheme } from "@/lib/Theme";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-
 import Toast from "react-native-toast-message";
 import { toastConfig } from "@/components/common/ToastConfig";
 import "@/lib/i18n"
-import { useFrameworkReady } from '@/hooks/useFrameworkReady'; // Initialize i18n
 
 const convex = new ConvexReactClient(process.env.EXPO_PUBLIC_CONVEX_URL!, {
   unsavedChangesWarning: false,
@@ -86,7 +84,7 @@ function AppContent() {
 }
 
 export default function RootLayout() {
-  useFrameworkReady();
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ThemeProvider>

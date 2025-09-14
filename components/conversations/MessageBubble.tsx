@@ -13,7 +13,7 @@ interface MessageBubbleProps {
 }
 
 /**
- * MessageBubble component for displaying individual messages
+ * MessageBubble component for displaying messages
  *
  * Features:
  * - Text and image message support (exclusive)
@@ -84,7 +84,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({
           shadowOpacity: 0.1,
           shadowRadius: 2,
           elevation: 2,
-          padding: scale(4), // Added padding to keep content within bounds
+          padding: scale(4), 
         },
         replyContainer: {
           backgroundColor: message.isOwner
@@ -133,7 +133,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({
         },
         timeContainer: {
           alignItems: message.isOwner ? "flex-end" : "flex-start",
-          paddingHorizontal: scale(4), // Added padding to keep time text within bounds
+          paddingHorizontal: scale(4),
           paddingBottom: scale(2),
         },
         timeText: {

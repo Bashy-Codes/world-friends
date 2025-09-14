@@ -11,6 +11,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 import { useTheme } from '@/lib/Theme';
+import { Button } from '../ui/Button';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -147,15 +148,6 @@ export const InputModal: React.FC<InputModalProps> = ({
       paddingBottom: verticalScale(24),
       gap: scale(12),
     },
-    actionButton: {
-      flex: 1,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingVertical: verticalScale(14),
-      borderRadius: scale(theme.borderRadius.lg),
-      gap: scale(8),
-    },
   });
 
   return (
@@ -208,33 +200,19 @@ export const InputModal: React.FC<InputModalProps> = ({
 
           {/* Actions */}
           <View style={styles.actionsContainer}>
-            <TouchableOpacity
-              style={[styles.actionButton, { backgroundColor: theme.colors.error,}]}
+            <Button
+              iconName='close'
+              bgColor={theme.colors.error}
               onPress={handleCancel}
-              activeOpacity={0.7}
-            >
-              <Ionicons
-                name="close"
-                size={scale(20)}
-                color={theme.colors.text}
+              style={{flex: 1}}
               />
-            </TouchableOpacity>
 
-            <TouchableOpacity
-              style={[
-                styles.actionButton,
-                canSubmit ? { backgroundColor: theme.colors.primary} : { backgroundColor: theme.colors.surfaceSecondary}
-              ]}
-              onPress={handleSubmit}
-              activeOpacity={0.7}
-              disabled={!canSubmit}
-            >
-              <Ionicons
-                name={submitIcon as any}
-                size={scale(20)}
-                color={canSubmit ? theme.colors.white : theme.colors.textMuted}
-              />
-            </TouchableOpacity>
+          <Button
+            iconName={submitIcon as any}
+            onPress={handleSubmit}
+            disabled={!canSubmit}
+            style={{flex: 1}}
+            />
           </View>
         </View>
       </View>

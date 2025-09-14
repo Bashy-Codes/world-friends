@@ -9,7 +9,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "@/lib/Theme";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { useTranslation } from "react-i18next";
-import { ReliableKeyboardAvoidingView } from "@/components/common/CustomKeyboardAvoidingView";
+import { ReliableKeyboardAvoidingView } from "@/components/common/KeyboardHandler";
 
 const { width } = Dimensions.get("window");
 

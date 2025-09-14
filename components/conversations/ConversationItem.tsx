@@ -13,19 +13,6 @@ interface ConversationItemProps {
   onLongPress?: (conversation: ConversationData) => void;
 }
 
-/**
- * ConversationItem component displays individual conversation in the list
- *
- * Features:
- * - Profile photo with fallback
- * - User name with admin/supporter badges
- * - Last message preview with type prefix
- * - Unread message indicator
- * - Timestamp formatting
- * - Beautiful responsive design
- * - Proper handling of TabHeader overlap
- * - Long press support for actions
- */
 export const ConversationItem: React.FC<ConversationItemProps> = ({
   conversation,
   onPress,

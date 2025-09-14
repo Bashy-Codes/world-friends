@@ -3,7 +3,6 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Text,
   Platform,
 } from "react-native";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";

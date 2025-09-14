@@ -1,6 +1,6 @@
 import type React from "react";
 import { memo, useCallback, useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Modal } from "react-native";
+import { View, Text, StyleSheet, Modal } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { useTheme } from "@/lib/Theme";
@@ -8,6 +8,8 @@ import { getCountryByCode } from "@/constants/geographics";
 import type { Request } from "@/types/friendships";
 import { Id } from "@/convex/_generated/dataModel";
 import { Image } from "expo-image";
+import AgeGenderChip from "../AgeGenderChip";
+import { Button } from "../ui/Button";
 
 interface RequestCardProps {
   request: Request;
@@ -94,34 +96,6 @@ const RequestCardComponent: React.FC<RequestCardProps> = ({
       alignItems: "center",
       gap: scale(8),
     },
-    genderButton: {
-      backgroundColor: `${theme.colors.secondary}15`,
-      paddingHorizontal: scale(8),
-      paddingVertical: verticalScale(4),
-      borderRadius: scale(12),
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    genderButtonMale: {
-      backgroundColor: `${theme.colors.info}15`,
-    },
-    genderButtonOther: {
-      backgroundColor: `${theme.colors.warning}15`,
-    },
-    ageButton: {
-      backgroundColor: `${theme.colors.primary}15`,
-      paddingHorizontal: scale(8),
-      paddingVertical: verticalScale(4),
-      borderRadius: scale(12),
-      flexDirection: "row",
-      alignItems: "center",
-      gap: scale(4),
-    },
-    ageText: {
-      fontSize: moderateScale(12),
-      fontWeight: "600",
-      color: theme.colors.primary,
-    },
     countryContainer: {
       flexDirection: "row",
       alignItems: "center",
@@ -140,24 +114,6 @@ const RequestCardComponent: React.FC<RequestCardProps> = ({
       flexDirection: "row",
       gap: scale(12),
       marginTop: verticalScale(12),
-    },
-    actionButton: {
-      flex: 1,
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-      paddingVertical: verticalScale(10),
-      borderRadius: scale(theme.borderRadius.md),
-      gap: scale(6),
-    },
-    readMessageButton: {
-      backgroundColor: theme.colors.primary,
-    },
-    acceptButton: {
-      backgroundColor: theme.colors.success,
-    },
-    declineButton: {
-      backgroundColor: theme.colors.error,
     },
     // Modal styles
     modalOverlay: {
@@ -222,25 +178,11 @@ const RequestCardComponent: React.FC<RequestCardProps> = ({
           <View style={styles.userInfo}>
             <Text style={styles.name}>{request.name}</Text>
             <View style={styles.infoRow}>
-              <View
-                style={[
-                  styles.genderButton,
-                  request.gender === "male" && styles.genderButtonMale,
-                  request.gender === "other" && styles.genderButtonOther,
-                ]}
-              >
-                <Text style={{ fontSize: moderateScale(14) }}>
-                  {request.gender === "female"
-                    ? "👩"
-                    : request.gender === "male"
-                      ? "👨"
-                      : "👤"}
-                </Text>
-              </View>
-              <View style={styles.ageButton}>
-                <Text style={styles.ageText}>🎂</Text>
-                <Text style={styles.ageText}>{request.age}</Text>
-              </View>
+            <AgeGenderChip
+              size="small"
+              gender={request.gender}
+              age={request.age}
+              />
             </View>
           </View>
         </View>
@@ -255,17 +197,10 @@ const RequestCardComponent: React.FC<RequestCardProps> = ({
 
         {/* Action buttons */}
         <View style={styles.actionsContainer}>
-          <TouchableOpacity
-            style={[styles.actionButton, styles.readMessageButton]}
-            onPress={handleReadMessage}
-            activeOpacity={0.8}
-          >
-            <Ionicons
-              name="mail-open"
-              size={scale(26)}
-              color={theme.colors.white}
-            />
-          </TouchableOpacity>
+        <Button
+          iconName="mail-open"
+          onPress={handleReadMessage}
+          />
         </View>
       </View>
 
@@ -293,29 +228,18 @@ const RequestCardComponent: React.FC<RequestCardProps> = ({
             </View>
 
             <View style={styles.modalActionsContainer}>
-              <TouchableOpacity
-                style={[styles.actionButton, styles.declineButton]}
-                onPress={handleDecline}
-                activeOpacity={0.8}
-              >
-                <Ionicons
-                  name="trash-sharp"
-                  size={scale(16)}
-                  color={theme.colors.white}
-                />
-              </TouchableOpacity>
+              <Button
+              iconName="close"
+              onPress={handleDecline}
+              bgColor={theme.colors.error}
+              style={{flex:1}}
+              />
 
-              <TouchableOpacity
-                style={[styles.actionButton, styles.acceptButton]}
-                onPress={handleAccept}
-                activeOpacity={0.8}
-              >
-                <Ionicons
-                  name="checkmark-circle"
-                  size={scale(16)}
-                  color={theme.colors.white}
-                />
-              </TouchableOpacity>
+              <Button
+              iconName="checkmark"
+              onPress={handleAccept}
+               style={{flex:1}}
+              />
             </View>
           </View>
         </View>

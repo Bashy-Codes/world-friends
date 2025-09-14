@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Modal } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
@@ -15,16 +15,6 @@ interface ActionModalProps {
   onClose: () => void;
 }
 
-/**
- * ActionModal component for message long-press actions
- *
- * Features:
- * - Reply option for all messages
- * - Delete option only for own messages
- * - Different styling for destructive actions
- * - Center modal design
- * - Clean action interface
- */
 export const ActionModal: React.FC<ActionModalProps> = ({
   visible,
   message,

@@ -40,6 +40,7 @@ export default function ComposeLetterScreen() {
 
     // Constants
     MAX_CONTENT_LENGTH,
+    MIN_CONTENT_LENGTH,
 
     // Handlers
     handleTitleChange,
@@ -175,6 +176,7 @@ export default function ComposeLetterScreen() {
         <LargeInputContainer
           value={content}
           onChangeText={handleContentChange}
+          minLength={MIN_CONTENT_LENGTH}
           maxLength={MAX_CONTENT_LENGTH}
           placeholder={t("composeLetter.inputPlaceholder")}
           placeholderTextColor={theme.colors.textMuted}

@@ -5,6 +5,7 @@ import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import { useTheme } from "@/lib/Theme";
 import { getCountryByCode } from "@/constants/geographics";
 import { ProfilePicture } from "@/components/common/ProfilePicture";
+import AgeGenderChip from "../AgeGenderChip";
 
 interface UserInfoProps {
   profilePicture: string;
@@ -77,36 +78,6 @@ export const UserInfo = memo<UserInfoProps>(
         marginBottom: verticalScale(12),
         gap: scale(12),
       },
-      genderButton: {
-        flexDirection: "row",
-        alignItems: "center",
-        backgroundColor: theme.colors.surface,
-        paddingHorizontal: scale(12),
-        paddingVertical: verticalScale(8),
-        borderRadius: scale(theme.borderRadius.full),
-        borderWidth: 1,
-        borderColor: theme.colors.border,
-      },
-      genderButtonMale: {
-        backgroundColor: theme.colors.info + "15",
-        borderColor: theme.colors.info + "30",
-      },
-      ageButton: {
-        flexDirection: "row",
-        alignItems: "center",
-        backgroundColor: theme.colors.surface,
-        paddingHorizontal: scale(12),
-        paddingVertical: verticalScale(8),
-        borderRadius: scale(theme.borderRadius.full),
-        borderWidth: 1,
-        borderColor: theme.colors.border,
-        gap: scale(4),
-      },
-      ageText: {
-        fontSize: moderateScale(16),
-        fontWeight: "600",
-        color: theme.colors.text,
-      },
       detailRow: {
         flexDirection: "row",
         alignItems: "center",
@@ -159,20 +130,12 @@ export const UserInfo = memo<UserInfoProps>(
         <Text style={styles.username}>@{username}</Text>
 
         <View style={styles.infoRow}>
-          <View
-            style={[
-              styles.genderButton,
-              gender === "male" && styles.genderButtonMale,
-            ]}
-          >
-            <Text style={{ fontSize: moderateScale(16) }}>
-              {gender === "female" ? "👩" : gender === "male" ? "👨" : "👤"}
-            </Text>
-          </View>
-          <View style={styles.ageButton}>
-            <Text style={styles.ageText}>🎂</Text>
-            <Text style={styles.ageText}>{age}</Text>
-          </View>
+         <AgeGenderChip
+          size="large"
+          gender={gender}
+          showGenerText
+          age={age}
+          />
         </View>
           <View style={styles.detailRow}>
             <Text style={styles.countryFlag}>{country?.flag}</Text>
